@@ -1,0 +1,250 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TopUp BUSSID & TruckSID — NamaToko</title>
+  <meta name="description" content="Layanan topup BUSSID & TruckSID cepat, aman, dan terpercaya. Pilih paket, isi data, bayar, dan nikmati layanan." />
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small custom styles */
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+    .card { transition: transform .18s ease, box-shadow .18s ease; }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 10px 30px rgba(2,6,23,0.35); }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center font-bold">TS</div>
+      <div>
+        <div class="text-lg font-semibold">NamaToko TopUp</div>
+        <div class="text-xs text-gray-400">BUSSID & TruckSID</div>
+      </div>
+    </a>
+    <nav class="hidden md:flex gap-6 items-center text-sm text-gray-300">
+      <a href="#paket" class="hover:text-white">Paket</a>
+      <a href="#cara" class="hover:text-white">Cara Beli</a>
+      <a href="#testi" class="hover:text-white">Testi</a>
+      <a href="#faq" class="hover:text-white">FAQ</a>
+      <a href="#contact" class="bg-indigo-600 px-4 py-2 rounded text-white">Pesan Sekarang</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden text-gray-300">☰</button>
+  </header>  <main class="max-w-6xl mx-auto px-6">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center py-12">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">TopUp <span class="text-indigo-400">BUSSID</span> & <span class="text-pink-400">TruckSID</span> Cepat & Terpercaya</h1>
+        <p class="mt-4 text-gray-300">Pilih paket, isi data, bayar lewat metode populer, dan paket langsung aktif tanpa ribet. Dukungan 24/7 & testimoni pelanggan asli.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#paket" class="bg-indigo-600 px-5 py-3 rounded font-medium">Lihat Paket</a>
+          <a href="#contact" class="border border-gray-700 px-5 py-3 rounded text-gray-300">Hubungi Kami</a>
+        </div><div class="mt-8 grid grid-cols-2 gap-4 text-sm text-gray-400">
+      <div class="glass p-4 rounded-lg shadow-sm">
+        <div class="font-semibold">Aktivasi Otomatis</div>
+        <div class="text-xs">Langsung aktif setelah pembayaran dikonfirmasi.</div>
+      </div>
+      <div class="glass p-4 rounded-lg shadow-sm">
+        <div class="font-semibold">Pembayaran Aman</div>
+        <div class="text-xs">Dukungan e-wallet, bank transfer, dan pulsa.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-6 bg-gradient-to-br from-gray-800/60 to-gray-900/40 rounded-xl card">
+    <div class="text-sm text-gray-400">Contoh form pembelian</div>
+    <form id="orderForm" class="mt-4 space-y-4">
+      <div>
+        <label class="text-xs text-gray-300">Pilih Game</label>
+        <select id="game" class="w-full mt-1 p-3 bg-gray-800 rounded text-gray-100">
+          <option value="bussid">BUSSID</option>
+          <option value="trucksid">TruckSID</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-gray-300">Nomor / ID</label>
+        <input id="playerId" type="text" placeholder="Masukkan ID atau username" class="w-full mt-1 p-3 bg-gray-800 rounded text-gray-100" required />
+      </div>
+      <div>
+        <label class="text-xs text-gray-300">Paket</label>
+        <select id="package" class="w-full mt-1 p-3 bg-gray-800 rounded text-gray-100">
+          <option value="10k">Paket 10K - 100 Gold</option>
+          <option value="25k">Paket 25K - 300 Gold</option>
+          <option value="50k">Paket 50K - 700 Gold</option>
+        </select>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="submit" class="flex-1 bg-pink-500 p-3 rounded font-medium">Beli Sekarang</button>
+        <button type="button" id="demoBtn" class="flex-1 border border-gray-700 p-3 rounded">Demo</button>
+      </div>
+      <div id="orderResult" class="text-sm text-gray-300"></div>
+    </form>
+  </div>
+</section>
+
+<!-- Paket -->
+<section id="paket" class="py-10">
+  <h2 class="text-2xl font-bold">Paket Populer</h2>
+  <p class="text-gray-400 mt-2">Pilih paket sesuai kebutuhan — harga langsung tampil dan tersedia stok realtime.</p>
+
+  <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Card paket -->
+    <div class="p-6 bg-gray-800 rounded-lg card">
+      <div class="text-sm text-gray-400">Paket Hemat</div>
+      <div class="mt-2 text-xl font-semibold">Rp 10.000</div>
+      <div class="text-gray-400 mt-1">100 Gold / 1 Slot</div>
+      <ul class="mt-3 text-sm text-gray-300 space-y-1">
+        <li>Aktivasi: Otomatis</li>
+        <li>Dukungan: 24/7</li>
+      </ul>
+      <div class="mt-4 flex gap-3">
+        <button class="flex-1 bg-indigo-600 p-2 rounded">Beli</button>
+        <button class="flex-1 border border-gray-700 p-2 rounded">Detail</button>
+      </div>
+    </div>
+
+    <div class="p-6 bg-gray-800 rounded-lg card">
+      <div class="text-sm text-gray-400">Paket Reguler</div>
+      <div class="mt-2 text-xl font-semibold">Rp 25.000</div>
+      <div class="text-gray-400 mt-1">300 Gold / 1 Slot</div>
+      <ul class="mt-3 text-sm text-gray-300 space-y-1">
+        <li>Aktivasi: Otomatis</li>
+        <li>Dukungan: 24/7</li>
+      </ul>
+      <div class="mt-4 flex gap-3">
+        <button class="flex-1 bg-indigo-600 p-2 rounded">Beli</button>
+        <button class="flex-1 border border-gray-700 p-2 rounded">Detail</button>
+      </div>
+    </div>
+
+    <div class="p-6 bg-gray-800 rounded-lg card">
+      <div class="text-sm text-gray-400">Paket Pro</div>
+      <div class="mt-2 text-xl font-semibold">Rp 50.000</div>
+      <div class="text-gray-400 mt-1">700 Gold / 1 Slot</div>
+      <ul class="mt-3 text-sm text-gray-300 space-y-1">
+        <li>Aktivasi: Otomatis</li>
+        <li>Dukungan: 24/7</li>
+        <li>Bonus: 50 Gold</li>
+      </ul>
+      <div class="mt-4 flex gap-3">
+        <button class="flex-1 bg-indigo-600 p-2 rounded">Beli</button>
+        <button class="flex-1 border border-gray-700 p-2 rounded">Detail</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cara Beli -->
+<section id="cara" class="py-10">
+  <h2 class="text-2xl font-bold">Cara Beli</h2>
+  <ol class="mt-4 list-decimal list-inside text-gray-300 space-y-2">
+    <li>Pilih game & paket.</li>
+    <li>Masukkan ID/nama pemain.</li>
+    <li>Lakukan pembayaran (e-wallet / bank / pulsa).</li>
+    <li>Tunggu konfirmasi. Paket akan aktif otomatis.</li>
+  </ol>
+</section>
+
+<!-- Testimonial -->
+<section id="testi" class="py-10">
+  <h2 class="text-2xl font-bold">Testimonial Pelanggan</h2>
+  <p class="text-gray-400 mt-2">Apa kata mereka yang sudah menggunakan layanan kami.</p>
+
+  <div class="mt-6 relative">
+    <div id="testiContainer" class="overflow-hidden rounded-lg bg-gray-800 p-6">
+      <!-- slider items -->
+      <div class="testiItem">
+        <p class="italic">"Topup cepat, langsung masuk! Recommended banget."</p>
+        <div class="mt-3 font-semibold">— Rian (Jakarta)</div>
+      </div>
+      <div class="hidden testiItem">
+        <p class="italic">"Harga terjangkau dan CS responsif. Mantul."</p>
+        <div class="mt-3 font-semibold">— Sari (Bandung)</div>
+      </div>
+      <div class="hidden testiItem">
+        <p class="italic">"Paket aktif dalam hitungan menit. Good job."</p>
+        <div class="mt-3 font-semibold">— Budi (Surabaya)</div>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-3">
+      <button id="prevTesti" class="px-4 py-2 border border-gray-700 rounded">‹</button>
+      <button id="nextTesti" class="px-4 py-2 border border-gray-700 rounded">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-10">
+  <h2 class="text-2xl font-bold">Pertanyaan Umum</h2>
+  <div class="mt-4 space-y-3 text-gray-300">
+    <div class="p-4 bg-gray-800 rounded"> <div class="font-semibold">Berapa lama aktivasi?</div> <div class="text-sm text-gray-400">Biasanya otomatis dalam 1-5 menit tergantung gateway.</div></div>
+    <div class="p-4 bg-gray-800 rounded"> <div class="font-semibold">Metode pembayaran apa saja?</div> <div class="text-sm text-gray-400">E-wallet, transfer bank, pulsa. Hubungi CS untuk metode lain.</div></div>
+    <div class="p-4 bg-gray-800 rounded"> <div class="font-semibold">Bagaimana jika paket tidak masuk?</div> <div class="text-sm text-gray-400">Tunggu 10 menit lalu hubungi CS dengan bukti pembayaran.</div></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-10">
+  <h2 class="text-2xl font-bold">Kontak & Support</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-6">
+    <div class="p-6 bg-gray-800 rounded">
+      <div class="font-semibold">CS 24/7</div>
+      <div class="text-gray-400 mt-2">WhatsApp: <a href="#" class="text-indigo-400">0812-XXXX-XXXX</a></div>
+      <div class="text-gray-400 mt-2">Email: <a href="#" class="text-indigo-400">support@namatoko.id</a></div>
+      <div class="text-gray-400 mt-2">Jam: 00:00 - 24:00</div>
+    </div>
+
+    <form id="contactForm" class="p-6 bg-gray-800 rounded space-y-4">
+      <input type="text" id="nameContact" placeholder="Nama" class="w-full p-3 bg-gray-900 rounded text-gray-100" />
+      <input type="email" id="emailContact" placeholder="Email" class="w-full p-3 bg-gray-900 rounded text-gray-100" />
+      <textarea id="messageContact" placeholder="Pesan" class="w-full p-3 bg-gray-900 rounded text-gray-100"></textarea>
+      <div class="flex gap-3">
+        <button type="submit" class="bg-indigo-600 p-3 rounded flex-1">Kirim</button>
+        <button type="button" class="border border-gray-700 p-3 rounded flex-1">Reset</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+  </main>  <footer class="mt-12 border-t border-gray-800 py-6 text-center text-sm text-gray-400">© 2025 NamaToko — Semua hak cipta.</footer>  <script>
+    // Simple interactivity: demo form and testi slider
+    const orderForm = document.getElementById('orderForm');
+    const orderResult = document.getElementById('orderResult');
+    orderForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const game = document.getElementById('game').value;
+      const id = document.getElementById('playerId').value.trim();
+      const pkg = document.getElementById('package').value;
+      if(!id){ orderResult.textContent = 'Isi ID pemain dulu.'; return; }
+      // Demo response — replace with backend API call
+      orderResult.innerHTML = `Pesanan dibuat: <strong>${game.toUpperCase()}</strong> | ID: ${id} | Paket: ${pkg} — Silakan lanjutkan pembayaran.`;
+    });
+
+    document.getElementById('demoBtn').addEventListener('click', ()=>{
+      document.getElementById('playerId').value = 'Player123';
+      document.getElementById('package').value = '25k';
+    });
+
+    // Testimonial slider
+    const items = Array.from(document.querySelectorAll('.testiItem'));
+    let testiIndex = 0;
+    function showTesti(i){
+      items.forEach((el, idx)=>{ el.classList.toggle('hidden', idx !== i); });
+    }
+    document.getElementById('nextTesti').addEventListener('click', ()=>{ testiIndex = (testiIndex+1)%items.length; showTesti(testiIndex); });
+    document.getElementById('prevTesti').addEventListener('click', ()=>{ testiIndex = (testiIndex-1+items.length)%items.length; showTesti(testiIndex); });
+    // autoplay
+    setInterval(()=>{ testiIndex = (testiIndex+1)%items.length; showTesti(testiIndex); }, 6000);
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', ()=>{
+      const nav = document.querySelector('header nav');
+      if(nav.classList.contains('hidden')) nav.classList.remove('hidden'); else nav.classList.add('hidden');
+    });
+
+  </script></body>
+</html>
