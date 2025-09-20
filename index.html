@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TopUp BUSSID & TruckSID — NamaToko</title>
+  <meta name="description" content="Layanan topup BUSSID & TruckSID cepat, aman, dan terpercaya." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { background-color:#0f172a; color:#f1f5f9; font-family: 'Poppins', sans-serif; }
+    .card { background-color:#1e293b; border-radius:1rem; padding:1.5rem; transition:.2s; }
+    .card:hover { transform:translateY(-4px); box-shadow:0 6px 20px rgba(0,0,0,0.4); }
+  </style>
+</head>
+<body>
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center font-bold">TS</div>
+      <div>
+        <div class="text-lg font-semibold">NamaToko TopUp</div>
+        <div class="text-xs text-gray-400">BUSSID & TruckSID</div>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm text-gray-300">
+      <a href="#paket">Paket</a>
+      <a href="#cara">Cara Beli</a>
+      <a href="#testi">Testi</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="bg-indigo-600 px-4 py-2 rounded">Pesan</a>
+    </nav>
+  </header>  <main class="max-w-6xl mx-auto px-6">
+    <section class="py-12 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl font-bold">TopUp <span class="text-indigo-400">BUSSID</span> & <span class="text-pink-400">TruckSID</span></h1>
+        <p class="mt-4 text-gray-300">Cepat, aman, dan terpercaya. Pilih paket, isi data, bayar, dan langsung aktif.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#paket" class="bg-indigo-600 px-5 py-3 rounded">Lihat Paket</a>
+          <a href="#contact" class="border border-gray-600 px-5 py-3 rounded">Hubungi Kami</a>
+        </div>
+      </div><form class="card space-y-4">
+    <div>
+      <label class="text-xs">Pilih Game</label>
+      <select class="w-full mt-1 p-3 rounded bg-gray-700">
+        <option>BUSSID</option>
+        <option>TruckSID</option>
+      </select>
+    </div>
+    <div>
+      <label class="text-xs">Nomor / ID</label>
+      <input type="text" placeholder="Masukkan ID" class="w-full mt-1 p-3 rounded bg-gray-700" />
+    </div>
+    <div>
+      <label class="text-xs">Paket</label>
+      <select class="w-full mt-1 p-3 rounded bg-gray-700">
+        <option>Paket 10K - 100 Gold</option>
+        <option>Paket 25K - 300 Gold</option>
+        <option>Paket 50K - 700 Gold</option>
+      </select>
+    </div>
+    <button type="button" class="w-full bg-pink-500 p-3 rounded">Beli Sekarang</button>
+  </form>
+</section>
+
+<section id="paket" class="py-10">
+  <h2 class="text-2xl font-bold">Paket Populer</h2>
+  <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="card">
+      <div class="font-semibold">Paket Hemat</div>
+      <div class="mt-2 text-xl">Rp 10.000</div>
+      <p class="text-sm text-gray-400">100 Gold</p>
+    </div>
+    <div class="card">
+      <div class="font-semibold">Paket Reguler</div>
+      <div class="mt-2 text-xl">Rp 25.000</div>
+      <p class="text-sm text-gray-400">300 Gold</p>
+    </div>
+    <div class="card">
+      <div class="font-semibold">Paket Pro</div>
+      <div class="mt-2 text-xl">Rp 50.000</div>
+      <p class="text-sm text-gray-400">700 Gold</p>
+    </div>
+  </div>
+</section>
+
+<section id="cara" class="py-10">
+  <h2 class="text-2xl font-bold">Cara Beli</h2>
+  <ol class="mt-4 list-decimal list-inside text-gray-300 space-y-2">
+    <li>Pilih game & paket</li>
+    <li>Masukkan ID</li>
+    <li>Lakukan pembayaran</li>
+    <li>Paket langsung aktif</li>
+  </ol>
+</section>
+
+<section id="testi" class="py-10">
+  <h2 class="text-2xl font-bold">Testimonial</h2>
+  <div class="mt-4 space-y-4">
+    <div class="card">"Topup cepat, langsung masuk!" — Rian</div>
+    <div class="card">"Harga murah, CS ramah." — Sari</div>
+    <div class="card">"Langsung aktif, mantap." — Budi</div>
+  </div>
+</section>
+
+<section id="faq" class="py-10">
+  <h2 class="text-2xl font-bold">FAQ</h2>
+  <div class="mt-4 space-y-3">
+    <div class="card"><b>Berapa lama aktivasi?</b><br>1-5 menit.</div>
+    <div class="card"><b>Metode pembayaran?</b><br>E-wallet, bank, pulsa.</div>
+    <div class="card"><b>Paket tidak masuk?</b><br>Hubungi CS.</div>
+  </div>
+</section>
+
+<section id="contact" class="py-10">
+  <h2 class="text-2xl font-bold">Kontak</h2>
+  <p class="mt-2">WhatsApp: <a href="#" class="text-indigo-400">0812-XXXX-XXXX</a></p>
+  <p>Email: <a href="#" class="text-indigo-400">support@namatoko.id</a></p>
+</section>
+
+  </main>  <footer class="mt-12 border-t border-gray-700 py-6 text-center text-sm text-gray-400">© 2025 NamaToko</footer>
+</body>
+</html>
