@@ -1,157 +1,251 @@
 <!doctype html>
+
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TopUp BUSSID & TruckSID — NamaToko</title>
-  <meta name="description" content="Layanan topup BUSSID & TruckSID cepat, aman, dan terpercaya." />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Topup Store — Bussid & Trucksid</title>
+  <meta name="description" content="Topup instan untuk Bussid & Trucksid — cepat, aman, harga kompetitif." />
   <style>
-    body {
-      background-color: #0f172a;
-      color: #f1f5f9;
-      font-family: 'Poppins', sans-serif;
-    }
-    .card {
-      background-color: #1e293b;
-      border-radius: 1.25rem;
-      padding: 1.75rem;
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    }
-    .btn {
-      background-color: #8b5cf6;
-      color: white;
-      padding: 0.75rem 1.25rem;
-      border-radius: 1rem;
-      transition: background-color 0.3s;
-    }
-    .btn:hover {
-      background-color: #6d28d9;
-    }
-    .highlight {
-      color: #8b5cf6;
-      font-weight: bold;
-    }
+    :root{ --bg:#0f172a; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.04); }
+    *{box-sizing:border-box}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#071124 0%, #071a2b 60%); color:#e6eef8; -webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:32px auto;padding:20px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04263a}
+h1{margin:0;font-size:20px}
+p.lead{margin:0;color:var(--muted);font-size:13px}
+
+main{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:24px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+.hero{display:flex;flex-direction:column;gap:10px}
+.hero h2{margin:0;font-size:26px}
+.hero p{margin:0;color:var(--muted)}
+
+.features{display:flex;gap:10px;margin-top:14px}
+.feature{flex:1;padding:10px;border-radius:10px;background:var(--glass);color:var(--muted);font-size:13px}
+
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.product{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;gap:10px}
+.product .meta{display:flex;justify-content:space-between;align-items:center}
+.price{font-weight:700}
+.btn{padding:9px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#3b82f6);color:#04263a}
+
+aside .steps{font-size:14px;color:var(--muted)}
+.cart-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02)}
+.total{margin-top:12px;font-weight:700}
+
+footer{margin-top:26px;text-align:center;color:var(--muted);font-size:13px}
+
+/* modal & toast */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center}
+.modal{width:100%;max-width:420px;background:linear-gradient(180deg,#071a2b,#071028);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+.toast{position:fixed;right:20px;bottom:20px;background:linear-gradient(180deg,#04263a,#063046);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
+
+/* responsive */
+@media (max-width:900px){main{grid-template-columns:1fr} .products{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start} }
+
   </style>
 </head>
 <body>
-  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">TS</div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">TS</div>
+        <div>
+          <h1>Topup Store — Bussid & Trucksid</h1>
+          <p class="lead">Instan • Aman • Harga Kompetitif</p>
+        </div>
+      </div>
       <div>
-        <div class="text-2xl font-semibold">NamaToko TopUp</div>
-        <div class="text-xs text-gray-400">BUSSID & TruckSID</div>
+        <button id="checkoutBtn" class="btn primary">Checkout</button>
+      </div>
+    </header><main>
+  <section class="card hero">
+    <div>
+      <h2>Topup Cepat untuk Bussid & Trucksid</h2>
+      <p>Masukkan ID pemain / nomor WA, pilih paket, dan pembayaran diproses otomatis. Demo ini adalah implementasi front-end + simulasi order.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">Instan — proses cepat</div>
+      <div class="feature">Metode bayar fleksibel</div>
+      <div class="feature">Support 24/7 (via chat)</div>
+    </div>
+
+    <div class="products" id="products">
+      <!-- Produk akan di-render oleh JS -->
+    </div>
+  </section>
+
+  <aside class="card">
+    <h3>Langkah Cepat</h3>
+    <div class="steps">
+      1. Pilih paket • 2. Masukkan ID pemain • 3. Bayar & terima konfirmasi
+    </div>
+
+    <div class="cart" style="margin-top:12px">
+      <h4>Keranjang (<span id="cartCount">0</span>)</h4>
+      <div class="cart-list" id="cartList">
+        <!-- item -->
+      </div>
+
+      <div class="total">Total: Rp <span id="totalPrice">0</span></div>
+
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button id="clearCart" class="btn ghost">Kosongkan</button>
+        <button id="openCheckout" class="btn primary">Bayar</button>
       </div>
     </div>
-    <nav class="hidden md:flex gap-8 text-sm text-gray-300">
-      <a href="#paket" class="hover:text-indigo-400">Paket</a>
-      <a href="#cara" class="hover:text-indigo-400">Cara Beli</a>
-      <a href="#testi" class="hover:text-indigo-400">Testi</a>
-      <a href="#faq" class="hover:text-indigo-400">FAQ</a>
-      <a href="#contact" class="btn">Pesan</a>
-    </nav>
-  </header>
 
-  <main class="max-w-6xl mx-auto px-6">
-    <section class="py-16 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl font-bold">TopUp <span class="highlight">BUSSID</span> & <span class="highlight">TruckSID</span></h1>
-        <p class="mt-4 text-gray-300">Cepat, aman, dan terpercaya. Pilih paket, isi data, bayar, dan langsung aktif.</p>
-        <div class="mt-6 flex gap-6">
-          <a href="#paket" class="btn">Lihat Paket</a>
-          <a href="#contact" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700">Hubungi Kami</a>
-        </div>
-      </div>
+    <hr style="margin:14px 0;border-color:rgba(255,255,255,0.03)">
+    <div>
+      <h4>Kontak</h4>
+      <p class="lead">Butuh bantuan? Chat via WhatsApp / isi form di website.</p>
+    </div>
+  </aside>
+</main>
 
-      <form class="card space-y-5">
-        <div>
-          <label class="text-xs">Pilih Game</label>
-          <select class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
-            <option>BUSSID</option>
-            <option>TruckSID</option>
-          </select>
+<footer class="card">
+  © <span id="year"></span> Topup Store — Built with ❤️ for Bussid & Trucksid players
+</footer>
+
+  </div>  <!-- Modal -->  <div id="modal" style="display:none" class="modal-backdrop" aria-hidden>
+    <div class="modal">
+      <h3 id="modalTitle">Checkout</h3>
+      <p style="color:var(--muted);font-size:13px">Masukkan ID pemain atau No. WhatsApp untuk konfirmasi.</p>
+      <form id="checkoutForm" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+        <input id="playerId" class="input" placeholder="ID pemain / No. WhatsApp" required />
+        <div style="display:flex;gap:8px">
+          <button type="button" id="cancelModal" class="btn ghost" style="flex:1">Batal</button>
+          <button type="submit" class="btn primary" style="flex:1">Bayar & Topup</button>
         </div>
-        <div>
-          <label class="text-xs">Nomor / ID</label>
-          <input type="text" placeholder="Masukkan ID" class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500" />
-        </div>
-        <div>
-          <label class="text-xs">Paket</label>
-          <select class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
-            <option>Paket 10K - 100 Gold</option>
-            <option>Paket 25K - 300 Gold</option>
-            <option>Paket 50K - 700 Gold</option>
-          </select>
-        </div>
-        <button type="button" class="btn w-full">Beli Sekarang</button>
       </form>
-    </section>
+    </div>
+  </div>  <!-- Toast -->  <div id="toast" style="display:none" class="toast"></div>  <script>
+    // Mock products
+    const PRODUCTS = [
+      { id: 'bussid_10k', title: 'Topup Bussid - 10K', price: 10000, desc: 'Saldo 10.000 untuk paket premium bussid', game: 'Bussid' },
+      { id: 'bussid_25k', title: 'Topup Bussid - 25K', price: 25000, desc: 'Saldo 25.000 + bonus item', game: 'Bussid', featured:true },
+      { id: 'trucksid_10k', title: 'Topup Trucksid - 10K', price: 10000, desc: 'Saldo 10.000 untuk Trucksid', game: 'Trucksid' },
+      { id: 'trucksid_50k', title: 'Topup Trucksid - 50K', price: 50000, desc: 'Paket hemat 50.000', game: 'Trucksid', featured:true }
+    ];
 
-    <!-- Paket Populer -->
-    <section id="paket" class="py-10">
-      <h2 class="text-2xl font-bold">Paket Populer</h2>
-      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card">
-          <div class="font-semibold">Paket Hemat</div>
-          <div class="mt-2 text-xl">Rp 10.000</div>
-          <p class="text-sm text-gray-400">100 Gold</p>
-        </div>
-        <div class="card">
-          <div class="font-semibold">Paket Reguler</div>
-          <div class="mt-2 text-xl">Rp 25.000</div>
-          <p class="text-sm text-gray-400">300 Gold</p>
-        </div>
-        <div class="card">
-          <div class="font-semibold">Paket Pro</div>
-          <div class="mt-2 text-xl">Rp 50.000</div>
-          <p class="text-sm text-gray-400">700 Gold</p>
-        </div>
-      </div>
-    </section>
+    const productsEl = document.getElementById('products');
+    const cartListEl = document.getElementById('cartList');
+    const cartCountEl = document.getElementById('cartCount');
+    const totalPriceEl = document.getElementById('totalPrice');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
 
-    <!-- Cara Beli -->
-    <section id="cara" class="py-10">
-      <h2 class="text-2xl font-bold">Cara Beli</h2>
-      <ol class="mt-4 list-decimal list-inside text-gray-300 space-y-2">
-        <li>Pilih game & paket</li>
-        <li>Masukkan ID</li>
-        <li>Lakukan pembayaran</li>
-        <li>Paket langsung aktif</li>
-      </ol>
-    </section>
+    let cart = [];
 
-    <!-- Testimonial -->
-    <section id="testi" class="py-10">
-      <h2 class="text-2xl font-bold">Testimonial</h2>
-      <div class="mt-4 space-y-4">
-        <div class="card">"Topup cepat, langsung masuk!" — Rian</div>
-        <div class="card">"Harga murah, CS ramah." — Sari</div>
-        <div class="card">"Langsung aktif, mantap." — Budi</div>
-      </div>
-    </section>
+    function formatRupiah(n){ return n.toLocaleString('id-ID'); }
 
-    <!-- FAQ -->
-    <section id="faq" class="py-10">
-      <h2 class="text-2xl font-bold">FAQ</h2>
-      <div class="mt-4 space-y-3">
-        <div class="card"><b>Berapa lama aktivasi?</b><br>1-5 menit.</div>
-        <div class="card"><b>Metode pembayaran?</b><br>E-wallet, bank, pulsa.</div>
-        <div class="card"><b>Paket tidak masuk?</b><br>Hubungi CS.</div>
-      </div>
-    </section>
+    function renderProducts(){
+      productsEl.innerHTML = '';
+      PRODUCTS.forEach(p => {
+        const el = document.createElement('div'); el.className='product';
+        el.innerHTML = `
+          <div class="meta"><div>
+            <div style="font-weight:700">${p.title}</div>
+            <div style="font-size:13px;color:var(--muted)">${p.desc}</div>
+          </div>
+          <div style="text-align:right"><div style="font-size:13px;color:var(--muted)">${p.game}</div><div class="price">Rp ${formatRupiah(p.price)}</div></div></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn ghost" onclick="addToCart('${p.id}')">Tambah ke Keranjang</button>
+            <button class="btn primary" onclick="buyNow('${p.id}')">Beli</button>
+          </div>
+        `;
+        productsEl.appendChild(el);
+      });
+    }
 
-    <!-- Kontak -->
-    <section id="contact" class="py-10">
-      <h2 class="text-2xl font-bold">Kontak</h2>
-      <p class="mt-2">WhatsApp: <a href="#" class="text-indigo-400">0812-XXXX-XXXX</a></p>
-      <p>Email: <a href="#" class="text-indigo-400">support@namatoko.id</a></p>
-    </section>
-  </main>
+    function renderCart(){
+      cartListEl.innerHTML = '';
+      cart.forEach((c, idx) => {
+        const item = document.createElement('div'); item.className='cart-item';
+        item.innerHTML = `
+          <div>
+            <div style="font-weight:600">${c.title}</div>
+            <div style="font-size:12px;color:var(--muted)">${c.game}</div>
+          </div>
+          <div style="text-align:right">
+            <div>Rp ${formatRupiah(c.price)}</div>
+            <div style="margin-top:6px"><button class="btn ghost" style="padding:6px 8px;font-size:12px" onclick="removeFromCart(${idx})">Hapus</button></div>
+          </div>
+        `;
+        cartListEl.appendChild(item);
+      });
+      cartCountEl.textContent = cart.length;
+      totalPriceEl.textContent = formatRupiah(cart.reduce((s,i)=>s+i.price,0));
+    }
 
-  <footer class="mt-12 border-t border-gray-700 py-6 text-center text-sm text-gray-400">© 2025 NamaToko</footer>
-</body>
+    function addToCart(id){
+      const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+      cart.push(Object.assign({},p)); renderCart(); showToast('Ditambahkan ke keranjang: ' + p.title);
+    }
+
+    function removeFromCart(index){ cart.splice(index,1); renderCart(); }
+
+    function clearCart(){ cart = []; renderCart(); }
+
+    function buyNow(id){ const p=PRODUCTS.find(x=>x.id===id); openModal(p); }
+
+    // Modal & checkout
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const playerIdInput = document.getElementById('playerId');
+
+    function openModal(product=null){
+      modal.style.display='flex';
+      modal.setAttribute('aria-hidden','false');
+      modalTitle.textContent = product ? ('Beli: ' + product.title) : 'Checkout Keranjang';
+      playerIdInput.value = '';
+      playerIdInput.focus();
+      modal._product = product || null;
+    }
+
+    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); modal._product=null; }
+
+    document.getElementById('cancelModal').addEventListener('click', ()=>closeModal());
+    document.getElementById('checkoutBtn').addEventListener('click', ()=>openModal(null));
+    document.getElementById('openCheckout').addEventListener('click', ()=>openModal(null));
+    document.getElementById('clearCart').addEventListener('click', ()=>{ clearCart(); showToast('Keranjang dikosongkan'); });
+
+    document.getElementById('checkoutForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const id = playerIdInput.value.trim(); if(!id){ alert('Masukkan ID pemain atau No. WhatsApp'); return; }
+
+      let order = null;
+      if(modal._product){ order = { items: [modal._product], amount: modal._product.price }; }
+      else { if(cart.length===0){ alert('Keranjang kosong'); return; } order = { items: [...cart], amount: cart.reduce((s,i)=>s+i.price,0) }; }
+
+      // Simulasi pemrosesan order (front-end only)
+      closeModal();
+      setTimeout(()=>{
+        const orderId = 'ORD-' + Math.random().toString(36).slice(2,9).toUpperCase();
+        showToast('Berhasil! OrderID: ' + orderId + ' • Rp ' + formatRupiah(order.amount));
+        // Jika checkout dari cart, kosongkan
+        if(!modal._product) clearCart();
+      }, 800);
+    });
+
+    // Toast helper
+    const toastEl = document.getElementById('toast');
+    let toastTimer = null;
+    function showToast(msg){
+      toastEl.style.display='block'; toastEl.textContent = msg;
+      if(toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ toastEl.style.display='none'; }, 3500);
+    }
+
+    // init
+    renderProducts(); renderCart();
+  </script></body>
 </html>
