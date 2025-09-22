@@ -3,179 +3,138 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TopUp BUSSID & TruckSID — NamaToko</title>
-  <meta name="description" content="Layanan topup BUSSID & TruckSID cepat, aman, dan terpercaya." />
+  <title>TOPUP BUSSID & TRUCKSID — STORE</title>
+  <meta name="description" content="TopUp BUSSID & TruckSID cepat, aman, terpercaya. Pilih paket → pesan via WhatsApp." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #0f172a;
-      color: #f1f5f9;
-      font-family: 'Poppins', sans-serif;
-    }
-    .card {
-      background-color: #1e293b;
-      border-radius: 1.25rem;
-      padding: 1.75rem;
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    }
-    .btn {
-      background-color: #8b5cf6;
-      color: white;
-      padding: 0.75rem 1.25rem;
-      border-radius: 1rem;
-      transition: background-color 0.3s;
-    }
-    .btn:hover {
-      background-color: #6d28d9;
-    }
-    .highlight {
-      color: #8b5cf6;
-      font-weight: bold;
-    }
+    body { background-color: #0f172a; color: #f1f5f9; font-family: 'Poppins', sans-serif; }
+    .card { background-color: #1e293b; border-radius: 1rem; padding: 1.5rem; transition:0.3s; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+    .btn { background: linear-gradient(90deg,#8b5cf6,#ec4899); color:white; padding:0.75rem 1.25rem; border-radius:0.75rem; display:block; text-align:center; font-weight:600; }
+    .btn:hover { opacity:0.9; }
+    .highlight { color:#8b5cf6; font-weight:700; }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">TS</div>
       <div>
-        <div class="text-2xl font-semibold">NamaToko TopUp</div>
-        <div class="text-xs text-gray-400">BUSSID & TruckSID</div>
+        <div class="text-2xl font-semibold">Konchils store</div>
+        <div class="text-xs text-gray-400">TopUp BUSSID & TruckSID</div>
       </div>
     </div>
-    <nav class="hidden md:flex gap-8 text-sm text-gray-300">
-      <a href="#paket" class="hover:text-indigo-400">Paket</a>
-      <a href="#cara" class="hover:text-indigo-400">Cara Beli</a>
-      <a href="#testi" class="hover:text-indigo-400">Testi</a>
-      <a href="#faq" class="hover:text-indigo-400">FAQ</a>
-      <a href="#contact" class="btn">Pesan</a>
+    <nav class="hidden md:flex gap-6 text-sm text-gray-300">
+      <a href="#form" class="hover:text-indigo-400">TopUp</a>
+      <a href="#paket" class="hover:text-indigo-400">Harga</a>
+      <a href="#contact" class="hover:text-indigo-400">Kontak</a>
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6">
-    <section class="py-16 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl font-bold">TopUp <span class="highlight">BUSSID</span> & <span class="highlight">TruckSID</span></h1>
-        <p class="mt-4 text-gray-300">Cepat, aman, dan terpercaya. Pilih paket, isi data, bayar, dan langsung aktif.</p>
-        <div class="mt-6 flex gap-6">
-          <a href="#paket" class="btn">Lihat Paket</a>
-          <a href="#contact" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700">Hubungi Kami</a>
-        </div>
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-4xl font-bold leading-snug">TopUp <span class="highlight">BUSSID</span> & <span class="highlight">TruckSID</span> Termurah 🚍🚛</h1>
+      <p class="mt-4 text-gray-300">Layanan cepat, aman, dan terpercaya. Tinggal pilih game, paket, lalu pesan via WhatsApp — langsung diproses kurang dari 5 menit!</p>
+      <div class="mt-6 flex gap-4">
+        <a href="#form" class="btn">TopUp Sekarang</a>
+        <a href="#paket" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700">Lihat Harga</a>
       </div>
+    </div>
+    <div class="hidden md:block">
+      <img src="https://dummyimage.com/500x350/1e293b/ffffff&text=BUSSID+%2B+TruckSID" alt="TopUp Game" class="rounded-xl shadow-lg">
+    </div>
+  </section>
 
-      <form class="card space-y-5">
-        <div>
-          <label class="text-xs">Pilih Game</label>
-          <select class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
-            <option>BUSSID</option>
-            <option>TruckSID</option>
-          </select>
-        </div>
-        <div>
-          <label class="text-xs">Nomor / ID</label>
-          <input type="text" placeholder="Masukkan ID" class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500" required />
-        </div>
-        <div>
-          <label class="text-xs">Paket</label>
-          <select class="w-full mt-1 p-4 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
-            <option>100 JT UB/UT — Rp10.000</option>
-            <option>300 JT UB/UT — Rp15.000</option>
-            <option>400 JT UB/UT — Rp20.000</option>
-            <option>700 JT UB/UT — Rp25.000</option>
-            <option>900 JT UB/UT — Rp30.000</option>
-            <option>1,1 Miliar UB/UT — Rp35.000</option>
-            <option>1,5 Miliar UB/UT — Rp40.000</option>
-            <option>2 Miliar (MAX) UB/UT — Rp50.000</option>
-          </select>
-        </div>
-        <button type="button" class="btn w-full">Beli Sekarang</button>
-      </form>
-    </section>
+  <!-- Form Order -->
+  <section id="form" class="max-w-lg mx-auto card space-y-5">
+    <h2 class="text-xl font-bold text-center">Form TopUp</h2>
+    <div>
+      <label class="text-sm">Pilih Game</label>
+      <select id="game" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
+        <option value="BUSSID">BUSSID</option>
+        <option value="TruckSID">TruckSID</option>
+      </select>
+    </div>
+    <div>
+      <label class="text-sm">Pilih Paket</label>
+      <select id="paket" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500">
+        <option value="100 JT UB/UT - Rp10.000">100 JT UB/UT — Rp10.000</option>
+        <option value="300 JT UB/UT - Rp15.000">300 JT UB/UT — Rp15.000</option>
+        <option value="400 JT UB/UT - Rp20.000">400 JT UB/UT — Rp20.000</option>
+        <option value="700 JT UB/UT - Rp25.000">700 JT UB/UT — Rp25.000</option>
+        <option value="900 JT UB/UT - Rp30.000">900 JT UB/UT — Rp30.000</option>
+        <option value="1,1 Miliar UB/UT - Rp35.000">1,1 Miliar UB/UT — Rp35.000</option>
+        <option value="1,5 Miliar UB/UT - Rp40.000">1,5 Miliar UB/UT — Rp40.000</option>
+        <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 Miliar (MAX) UB/UT 🔥 — Rp50.000</option>
+      </select>
+    </div>
+    <button onclick="pesanWA()" class="btn w-full">Beli Sekarang</button>
+  </section>
 
-    <!-- Paket Populer -->
-    <section id="paket" class="py-10">
-      <h2 class="text-2xl font-bold">Daftar Harga TopUp BUSSID & TruckSID</h2>
-      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card">
-          <div class="font-semibold">100 JT UB/UT</div>
-          <div class="mt-2 text-xl">Rp 10.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">300 JT UB/UT</div>
-          <div class="mt-2 text-xl">Rp 15.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">400 JT UB/UT</div>
-          <div class="mt-2 text-xl">Rp 20.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">700 JT UB/UT</div>
-          <div class="mt-2 text-xl">Rp 25.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">900 JT UB/UT</div>
-          <div class="mt-2 text-xl">Rp 30.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">1,1 Miliar UB/UT</div>
-          <div class="mt-2 text-xl">Rp 35.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">1,5 Miliar UB/UT</div>
-          <div class="mt-2 text-xl">Rp 40.000</div>
-        </div>
-        <div class="card">
-          <div class="font-semibold">2 Miliar (MAX) UB/UT 🔥</div>
-          <div class="mt-2 text-xl">Rp 50.000</div>
-        </div>
+  <!-- Daftar Harga -->
+  <section id="paket" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-bold text-center">Daftar Harga TopUp</h2>
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card text-center">
+        <div class="font-semibold">100 JT UB/UT</div>
+        <div class="mt-2 text-xl">Rp 10.000</div>
       </div>
-    </section>
-
-    <!-- Cara Beli -->
-    <section id="cara" class="py-10">
-      <h2 class="text-2xl font-bold">Cara Beli</h2>
-      <ol class="mt-4 list-decimal list-inside text-gray-300 space-y-2">
-        <li>Pilih game & paket</li>
-        <li>Masukkan ID</li>
-        <li>Lakukan pembayaran</li>
-        <li>Paket langsung aktif</li>
-      </ol>
-    </section>
-
-    <!-- Testimonial -->
-    <section id="testi" class="py-10">
-      <h2 class="text-2xl font-bold">Testimonial</h2>
-      <div class="mt-4 space-y-4">
-        <div class="card">"Topup cepat, langsung masuk!" — Rian</div>
-        <div class="card">"Harga murah, CS ramah." — Sari</div>
-        <div class="card">"Langsung aktif, mantap." — Budi</div>
+      <div class="card text-center">
+        <div class="font-semibold">300 JT UB/UT</div>
+        <div class="mt-2 text-xl">Rp 15.000</div>
       </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-10">
-      <h2 class="text-2xl font-bold">FAQ</h2>
-      <div class="mt-4 space-y-3">
-        <div class="card"><b>Berapa lama aktivasi?</b><br>1-5 menit.</div>
-        <div class="card"><b>Metode pembayaran?</b><br>E-wallet, bank, pulsa.</div>
-        <div class="card"><b>Paket tidak masuk?</b><br>Hubungi CS.</div>
+      <div class="card text-center">
+        <div class="font-semibold">400 JT UB/UT</div>
+        <div class="mt-2 text-xl">Rp 20.000</div>
       </div>
-    </section>
+      <div class="card text-center">
+        <div class="font-semibold">700 JT UB/UT</div>
+        <div class="mt-2 text-xl">Rp 25.000</div>
+      </div>
+      <div class="card text-center">
+        <div class="font-semibold">900 JT UB/UT</div>
+        <div class="mt-2 text-xl">Rp 30.000</div>
+      </div>
+      <div class="card text-center">
+        <div class="font-semibold">1,1 Miliar UB/UT</div>
+        <div class="mt-2 text-xl">Rp 35.000</div>
+      </div>
+      <div class="card text-center">
+        <div class="font-semibold">1,5 Miliar UB/UT</div>
+        <div class="mt-2 text-xl">Rp 40.000</div>
+      </div>
+      <div class="card text-center relative">
+        <span class="absolute top-2 right-2 bg-indigo-500 text-xs px-2 py-1 rounded">Best Seller</span>
+        <div class="font-semibold">2 Miliar (MAX) UB/UT</div>
+        <div class="mt-2 text-xl text-indigo-400 font-bold">Rp 50.000</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Kontak -->
-    <section id="contact" class="py-10">
-      <h2 class="text-2xl font-bold">Kontak</h2>
-      <p class="mt-2">WhatsApp: <a href="#" class="text-indigo-400">0812-XXXX-XXXX</a></p>
-      <p>Email: <a href="#" class="text-indigo-400">support@namatoko.id</a></p>
-    </section>
-  </main>
+  <!-- Kontak -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-2xl font-bold">Kontak</h2>
+    <p class="mt-3">WhatsApp: <a href="https://wa.me/62812XXXXXXX" target="_blank" class="text-indigo-400">0812-XXXX-XXXX</a></p>
+    <p>Email: <a href="mailto:support@namatoko.id" class="text-indigo-400">support@namatoko.id</a></p>
+  </section>
 
+  <!-- Footer -->
   <footer class="mt-12 border-t border-gray-700 py-6 text-center text-sm text-gray-400">
-    © 2025 NamaToko
+    © 2025 NamaToko • <a href="https://wa.me/62812XXXXXXX" target="_blank" class="hover:text-indigo-400">WhatsApp</a> • <a href="#" class="hover:text-indigo-400">Instagram</a>
   </footer>
+
+  <script>
+    function pesanWA() {
+      const game = document.getElementById('game').value;
+      const paket = document.getElementById('paket').value;
+      const nomor = "62812XXXXXXX"; // ganti dengan nomor WA admin
+      const pesan = `Halo kak, saya ingin TopUp ${game} dengan paket ${paket}`;
+      const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
 </html>
