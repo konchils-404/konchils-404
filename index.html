@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TOPUP BUSSID & TRUCKSID — KONCHILS STORE</title>
-  <meta name="description" content="TopUp BUSSID & TruckSID cepat, aman, terpercaya. Pilih paket → pesan via WhatsApp. Proses kurang dari 5 menit!" />
+  <meta name="description" content="TopUp BUSSID & TruckSID cepat, aman, terpercaya. Proses ≤ 5 menit!" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -45,42 +45,10 @@
     .btn:active {
       transform: scale(0.98);
     }
-    .btn-loading {
-      pointer-events: none;
-      opacity: 0.7;
-    }
-    .btn-loading::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      border: 2px solid transparent;
-      border-top-color: #ffffff;
-      border-radius: 50%;
-      animation: button-loading-spinner 1s ease infinite;
-    }
-    @keyframes button-loading-spinner {
-      from { transform: rotate(0turn); }
-      to { transform: rotate(1turn); }
-    }
     .highlight { color:#8b5cf6; font-weight:700; }
     .price-card {
       position: relative;
       overflow: hidden;
-    }
-    .price-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg,#8b5cf6,#ec4899);
     }
     .best-seller {
       background: linear-gradient(135deg,#8b5cf6,#ec4899);
@@ -94,25 +62,6 @@
       border-radius: 0 0 0 10px;
       transform: rotate(5deg);
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 15px 20px;
-      border-radius: 8px;
-      background-color: #10b981;
-      color: white;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transform: translateX(150%);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-    }
-    .notification.show {
-      transform: translateX(0);
-    }
-    .notification.error {
-      background-color: #ef4444;
     }
     .floating-wa {
       position: fixed;
@@ -141,80 +90,66 @@
       70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
-    .mobile-menu {
-      display: none;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 24px;
-    }
-    .nav-mobile {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: #0f172a;
-      z-index: 1000;
+    .game-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
+      font-size: 40px;
+      margin: 0 auto 15px;
     }
-    .nav-mobile.active {
-      transform: translateY(0);
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 10px;
+      background: rgba(139, 92, 246, 0.2);
     }
-    .nav-mobile a {
-      display: block;
-      padding: 15px;
-      font-size: 1.5rem;
-      color: white;
-      text-decoration: none;
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
     }
-    .close-menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 30px;
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(90deg,#8b5cf6,#ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .hero-bg {
+      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.2), transparent 50%);
     }
   </style>
 </head>
 <body>
-
-  <!-- Notification -->
-  <div id="notification" class="notification"></div>
 
   <!-- Floating WhatsApp -->
   <a href="https://wa.me/6287878841498?text=Halo%20kak,%20saya%20ingin%20bertanya%20tentang%20TopUp%20BUSSID%20/%20TruckSID" target="_blank" class="floating-wa">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Mobile Menu -->
-  <button id="mobileMenuBtn" class="mobile-menu md:hidden fixed top-6 right-6 z-50">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <nav id="navMobile" class="nav-mobile md:hidden">
-    <button id="closeMenuBtn" class="close-menu">
-      <i class="fas fa-times"></i>
-    </button>
-    <a href="#form" onclick="closeMobileMenu()">TopUp</a>
-    <a href="#paket" onclick="closeMobileMenu()">Harga</a>
-    <a href="#contact" onclick="closeMobileMenu()">Kontak</a>
-  </nav>
-
   <!-- Header -->
   <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">TS</div>
+      <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">
+        <i class="fas fa-gamepad"></i>
+      </div>
       <div>
-        <div class="text-2xl font-semibold">Konchils store</div>
-        <div class="text-xs text-gray-400">TopUp BUSSID & TruckSID</div>
+        <div class="text-2xl font-semibold">Konchils Store</div>
+        <div class="text-xs text-gray-400">TopUp Game</div>
       </div>
     </div>
     <nav class="hidden md:flex gap-6 text-sm text-gray-300">
@@ -225,146 +160,207 @@
   </header>
 
   <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
+  <section class="hero-bg max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
     <div>
-      <h1 class="text-4xl md:text-5xl font-bold leading-snug">TopUp <span class="highlight">BUSSID</span> & <span class="highlight">TruckSID</span> Termurah 🚍🚛</h1>
-      <p class="mt-4 text-gray-300">Layanan cepat, aman, dan terpercaya. Tinggal pilih game, paket, lalu pesan via WhatsApp — langsung diproses kurang dari 5 menit!</p>
+      <h1 class="text-4xl md:text-5xl font-bold leading-snug">
+        TopUp <span class="highlight">BUSSID</span> & <br>
+        <span class="highlight">TruckSID</span> 🚍🚛
+      </h1>
+      <p class="mt-4 text-gray-300">Cepat, aman, terpercaya. Proses ≤ 5 menit!</p>
       <div class="mt-6 flex gap-4 flex-wrap">
-        <a href="#form" class="btn flex-1 min-w-[200px] text-center">TopUp Sekarang</a>
-        <a href="#paket" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700 transition-colors text-center">Lihat Harga</a>
+        <a href="#form" class="btn flex-1 min-w-[200px] text-center">
+          <i class="fas fa-bolt mr-2"></i> TopUp Sekarang
+        </a>
+        <a href="#paket" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700 transition-colors text-center">
+          Lihat Harga
+        </a>
       </div>
-      <div class="mt-6 flex items-center text-sm text-gray-400">
-        <i class="fas fa-shield-alt mr-2 text-indigo-400"></i>
-        <span>100% Aman & Terpercaya</span>
-        <i class="fas fa-bolt ml-4 mr-2 text-yellow-400"></i>
-        <span>Proses Cepat ≤ 5 Menit</span>
+      <div class="mt-8 grid grid-cols-3 gap-4">
+        <div class="text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="text-xs mt-1">Aman</div>
+        </div>
+        <div class="text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="text-xs mt-1">Cepat</div>
+        </div>
+        <div class="text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="text-xs mt-1">Bantuan</div>
+        </div>
       </div>
     </div>
     <div class="hidden md:block">
-      <img src="https://dummyimage.com/500x350/1e293b/8b5cf6&text=BUSSID+%2B+TruckSID+TopUp" alt="TopUp Game BUSSID dan TruckSID" class="rounded-xl shadow-lg">
+      <div class="relative">
+        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-2xl blur opacity-30"></div>
+        <div class="relative bg-gray-800 rounded-2xl p-8">
+          <div class="flex justify-center space-x-8">
+            <div class="text-center">
+              <div class="game-icon bg-gradient-to-br from-indigo-500 to-purple-600">
+                <i class="fas fa-bus"></i>
+              </div>
+              <div class="font-bold">BUSSID</div>
+            </div>
+            <div class="text-center">
+              <div class="game-icon bg-gradient-to-br from-pink-500 to-red-600">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div class="font-bold">TruckSID</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Form Order -->
   <section id="form" class="max-w-lg mx-auto px-6 py-8">
     <div class="card space-y-5">
-      <h2 class="text-xl font-bold text-center">Form TopUp</h2>
+      <h2 class="text-xl font-bold text-center">
+        <i class="fas fa-shopping-cart mr-2"></i> Form TopUp
+      </h2>
       <div>
-        <label class="text-sm">Pilih Game</label>
+        <label class="text-sm flex items-center">
+          <i class="fas fa-gamepad mr-2 text-indigo-400"></i> Pilih Game
+        </label>
         <select id="game" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500 border border-gray-600">
           <option value="BUSSID">BUSSID</option>
           <option value="TruckSID">TruckSID</option>
         </select>
       </div>
       <div>
-        <label class="text-sm">Pilih Paket</label>
+        <label class="text-sm flex items-center">
+          <i class="fas fa-gem mr-2 text-indigo-400"></i> Pilih Paket
+        </label>
         <select id="paket" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500 border border-gray-600">
-          <option value="100 JT UB/UT - Rp10.000">100 JT UB/UT — Rp10.000</option>
-          <option value="300 JT UB/UT - Rp15.000">300 JT UB/UT — Rp15.000</option>
-          <option value="400 JT UB/UT - Rp20.000">400 JT UB/UT — Rp20.000</option>
-          <option value="700 JT UB/UT - Rp25.000">700 JT UB/UT — Rp25.000</option>
-          <option value="900 JT UB/UT - Rp30.000">900 JT UB/UT — Rp30.000</option>
-          <option value="1,1 Miliar UB/UT - Rp35.000">1,1 Miliar UB/UT — Rp35.000</option>
-          <option value="1,5 Miliar UB/UT - Rp40.000">1,5 Miliar UB/UT — Rp40.000</option>
-          <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 Miliar (MAX) UB/UT 🔥 — Rp50.000</option>
+          <option value="100 JT UB/UT - Rp10.000">100 JT — Rp10.000</option>
+          <option value="300 JT UB/UT - Rp15.000">300 JT — Rp15.000</option>
+          <option value="400 JT UB/UT - Rp20.000">400 JT — Rp20.000</option>
+          <option value="700 JT UB/UT - Rp25.000">700 JT — Rp25.000</option>
+          <option value="900 JT UB/UT - Rp30.000">900 JT — Rp30.000</option>
+          <option value="1,1 Miliar UB/UT - Rp35.000">1,1 M — Rp35.000</option>
+          <option value="1,5 Miliar UB/UT - Rp40.000">1,5 M — Rp40.000</option>
+          <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 M (MAX) 🔥 — Rp50.000</option>
         </select>
       </div>
-      <button id="orderBtn" onclick="pesanWA()" class="btn w-full">
-        <span id="btnText">Beli Sekarang</span>
+      <button onclick="pesanWA()" class="btn w-full">
+        <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
       </button>
-      <p class="text-xs text-gray-400 text-center">Dengan mengklik "Beli Sekarang", Anda akan diarahkan ke WhatsApp untuk menyelesaikan pemesanan.</p>
     </div>
   </section>
 
   <!-- Daftar Harga -->
   <section id="paket" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-bold text-center">Daftar Harga TopUp</h2>
-    <p class="text-center text-gray-400 mt-2">Pilih paket yang sesuai dengan kebutuhan Anda</p>
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <h2 class="text-2xl font-bold text-center mb-2">
+      <i class="fas fa-tags mr-2"></i> Daftar Harga
+    </h2>
+    <p class="text-center text-gray-400 mb-8">Pilih paket sesuai kebutuhan</p>
+    
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="card price-card text-center">
-        <div class="font-semibold">100 JT UB/UT</div>
+        <div class="font-semibold">100 JT</div>
         <div class="mt-2 text-xl">Rp 10.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">300 JT UB/UT</div>
+        <div class="font-semibold">300 JT</div>
         <div class="mt-2 text-xl">Rp 15.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">400 JT UB/UT</div>
+        <div class="font-semibold">400 JT</div>
         <div class="mt-2 text-xl">Rp 20.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">700 JT UB/UT</div>
+        <div class="font-semibold">700 JT</div>
         <div class="mt-2 text-xl">Rp 25.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">900 JT UB/UT</div>
+        <div class="font-semibold">900 JT</div>
         <div class="mt-2 text-xl">Rp 30.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">1,1 Miliar UB/UT</div>
+        <div class="font-semibold">1,1 M</div>
         <div class="mt-2 text-xl">Rp 35.000</div>
       </div>
       <div class="card price-card text-center">
-        <div class="font-semibold">1,5 Miliar UB/UT</div>
+        <div class="font-semibold">1,5 M</div>
         <div class="mt-2 text-xl">Rp 40.000</div>
       </div>
       <div class="card price-card text-center relative">
-        <span class="best-seller">Best Seller</span>
-        <div class="font-semibold">2 Miliar (MAX) UB/UT</div>
+        <span class="best-seller">Terlaris</span>
+        <div class="font-semibold">2 M (MAX)</div>
         <div class="mt-2 text-xl text-indigo-400 font-bold">Rp 50.000</div>
       </div>
     </div>
   </section>
 
-  <!-- Kontak -->
-  <section id="contact" class="max-w-6xl mx-auto px-6 py-12 text-center">
-    <h2 class="text-2xl font-bold">Kontak & Bantuan</h2>
-    <p class="mt-3">Butuh bantuan? Hubungi kami melalui:</p>
-    <div class="mt-6 flex flex-col md:flex-row justify-center gap-8">
-      <div class="flex items-center justify-center gap-2">
-        <i class="fab fa-whatsapp text-2xl text-green-400"></i>
-        <div class="text-left">
-          <div class="font-semibold">WhatsApp</div>
-          <a href="https://wa.me/6287878841498" target="_blank" class="text-indigo-400 hover:underline">0878-7888-1498</a>
+  <!-- Cara Order -->
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <h2 class="text-2xl font-bold text-center mb-8">
+      <i class="fas fa-play-circle mr-2"></i> Cara Order
+    </h2>
+    <div class="space-y-6">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div>
+          <div class="font-semibold">Pilih Game & Paket</div>
+          <div class="text-sm text-gray-400">Tentukan pilihan Anda</div>
         </div>
       </div>
-      <div class="flex items-center justify-center gap-2">
-        <i class="fas fa-envelope text-2xl text-yellow-400"></i>
-        <div class="text-left">
-          <div class="font-semibold">Email</div>
-          <a href="mailto:konchils@store.id" class="text-indigo-400 hover:underline">konchils@store.id</a>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div>
+          <div class="font-semibold">Klik Tombol WhatsApp</div>
+          <div class="text-sm text-gray-400">Akan terbuka aplikasi WhatsApp</div>
         </div>
       </div>
-    </div>
-    <div class="mt-8 bg-gray-800 p-4 rounded-lg max-w-2xl mx-auto">
-      <h3 class="font-semibold text-lg mb-2">Cara Order:</h3>
-      <ol class="text-left list-decimal pl-5 space-y-2 text-sm">
-        <li>Pilih game dan paket yang diinginkan</li>
-        <li>Klik tombol "Beli Sekarang"</li>
-        <li>Anda akan diarahkan ke WhatsApp</li>
-        <li>Kirim pesan konfirmasi dan ikuti instruksi admin</li>
-        <li>Lakukan pembayaran dan konfirmasi</li>
-        <li>TopUp akan diproses dalam 5 menit</li>
-      </ol>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div>
+          <div class="font-semibold">Konfirmasi & Bayar</div>
+          <div class="text-sm text-gray-400">Ikuti instruksi admin</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div>
+          <div class="font-semibold">Tunggu Proses</div>
+          <div class="text-sm text-gray-400">Selesai dalam 5 menit</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="max-w-3xl mx-auto px-6 py-12">
-    <h2 class="text-2xl font-bold text-center mb-8">Pertanyaan Umum (FAQ)</h2>
-    <div class="space-y-4">
-      <div class="card">
-        <div class="font-semibold">Berapa lama proses TopUp?</div>
-        <p class="mt-2 text-sm text-gray-300">Biasanya kurang dari 5 menit setelah pembayaran dikonfirmasi.</p>
+  <!-- Kontak -->
+  <section id="contact" class="max-w-3xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-2xl font-bold mb-6">
+      <i class="fas fa-headset mr-2"></i> Butuh Bantuan?
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card text-center">
+        <div class="feature-icon mx-auto bg-green-500/20 text-green-400">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="font-semibold mt-4">WhatsApp</div>
+        <a href="https://wa.me/6287878841498" target="_blank" class="text-indigo-400 hover:underline block mt-2">
+          0878-7888-1498
+        </a>
+        <div class="text-xs text-gray-400 mt-2">Fast Response</div>
       </div>
-      <div class="card">
-        <div class="font-semibold">Metode pembayaran apa saja yang diterima?</div>
-        <p class="mt-2 text-sm text-gray-300">Kami menerima transfer bank (BCA, BRI, BNI, Mandiri) dan e-wallet (Dana, OVO, Gopay).</p>
-      </div>
-      <div class="card">
-        <div class="font-semibold">Apakah aman melakukan TopUp di sini?</div>
-        <p class="mt-2 text-sm text-gray-300">Ya, 100% aman. Kami sudah melayani ribuan customer dengan puas.</p>
+      <div class="card text-center">
+        <div class="feature-icon mx-auto bg-yellow-500/20 text-yellow-400">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="font-semibold mt-4">Email</div>
+        <a href="mailto:konchils@store.id" class="text-indigo-400 hover:underline block mt-2">
+          konchils@store.id
+        </a>
+        <div class="text-xs text-gray-400 mt-2">Support 24/7</div>
       </div>
     </div>
   </section>
@@ -374,90 +370,20 @@
     © 2025 konchils store • 
     <a href="https://wa.me/6287878841498" target="_blank" class="hover:text-indigo-400 transition-colors">WhatsApp</a> • 
     <a href="#" class="hover:text-indigo-400 transition-colors">Instagram</a>
-    <p class="mt-2">Layanan TopUp BUSSID & TruckSID Terpercaya</p>
   </footer>
 
   <script>
-    // Fungsi untuk menampilkan notifikasi
-    function showNotification(message, isError = false) {
-      const notification = document.getElementById('notification');
-      notification.textContent = message;
-      notification.classList.toggle('error', isError);
-      notification.classList.add('show');
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 3000);
-    }
-
     // Fungsi untuk mengirim pesan WhatsApp
     function pesanWA() {
       const game = document.getElementById('game').value;
       const paket = document.getElementById('paket').value;
-      const orderBtn = document.getElementById('orderBtn');
-      const btnText = document.getElementById('btnText');
       
-      // Validasi sederhana
-      if (!game || !paket) {
-        showNotification('Silakan pilih game dan paket terlebih dahulu', true);
-        return;
-      }
+      const nomor = "6287878841498";
+      const pesan = `Halo kak, saya ingin TopUp ${game} dengan paket ${paket}. Bagaimana cara pemesanannya?`;
+      const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
       
-      // Tampilkan loading state
-      orderBtn.classList.add('btn-loading');
-      btnText.textContent = 'Memproses...';
-      
-      // Simulasi proses (bisa dihapus di production)
-      setTimeout(() => {
-        const nomor = "6287878841498";
-        const pesan = `Halo kak, saya ingin TopUp ${game} dengan paket ${paket}. Bagaimana cara pemesanannya?`;
-        const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
-        
-        // Reset tombol
-        orderBtn.classList.remove('btn-loading');
-        btnText.textContent = 'Beli Sekarang';
-        
-        // Buka WhatsApp
-        window.open(url, '_blank');
-        
-        // Tampilkan notifikasi sukses
-        showNotification('Anda akan diarahkan ke WhatsApp');
-      }, 1000);
+      window.open(url, '_blank');
     }
-
-    // Fungsi untuk mobile menu
-    function openMobileMenu() {
-      document.getElementById('navMobile').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileMenu() {
-      document.getElementById('navMobile').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Event listeners untuk mobile menu
-    document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
-    document.getElementById('closeMenuBtn').addEventListener('click', closeMobileMenu);
-
-    // Tutup menu mobile ketika mengklik link
-    document.querySelectorAll('#navMobile a').forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
-    });
-
-    // Smooth scroll untuk anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
 
     // Animasi saat scroll
     window.addEventListener('scroll', () => {
