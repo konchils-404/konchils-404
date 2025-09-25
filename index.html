@@ -25,67 +25,69 @@
       background-color: var(--color-background);
       color: #e2e8f0;
       font-family: 'Inter', sans-serif;
-      background-image: radial-gradient(circle at top left, rgba(139, 92, 246, 0.15), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 40%);
+      position: relative;
+      background-image: radial-gradient(circle at top left, rgba(139, 92, 246, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.1), transparent 40%);
+    }
+    body::after {
+        content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh; pointer-events: none;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXVoaGigpqUDAgP////CwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLOnOrjAAAAIXRSTlMABAj08vLw8vLw8vLw8vLw8vLw8vLw8vLw8vLw8vLw8vLw8vLw8vLw8/P0/Pz8/P7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4-');
+        opacity: 0.05; z-index: -1;
     }
 
-    /* Kartu dengan efek 'Glow Border' */
-    .card {  
-      background-color: var(--color-surface);
-      border-radius: 1rem;  
-      padding: 2rem;  
-      border: 1px solid #2d3748;
-      transition: all 0.4s ease-in-out;
-      position: relative;
-    }
-    .card:hover {  
-      transform: translateY(-8px);  
-      border-color: var(--color-primary);
-      box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
-    }
+    .card { background-color: var(--color-surface); border-radius: 1rem; padding: 2rem; border: 1px solid #2d3748; transition: all 0.4s ease-in-out; position: relative; }
+    .card:hover { transform: translateY(-8px); border-color: var(--color-primary); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2); }
+    .btn { background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); color: white; padding: 0.875rem 1.5rem; border-radius: 0.75rem; font-weight: 700; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4); }
     
-    /* Tombol dengan gradient dan shadow */
-    .btn {  
-      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));  
-      color: white;  
-      padding: 0.875rem 1.5rem;
-      border-radius: 0.75rem;  
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    /* Tampilan Dropdown Kustom */
+    .select-wrapper { position: relative; }
+    .custom-select {
+        -webkit-appearance: none; -moz-appearance: none; appearance: none;
+        background-color: #2d3748;
+        border: 1px solid #4a5568;
+        border-radius: 0.75rem;
+        padding: 0.875rem 2.5rem 0.875rem 1rem;
+        width: 100%;
+        color: #e2e8f0;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
     }
-    .btn:hover {  
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+    .custom-select:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4);
     }
-    
+    .select-wrapper .select-arrow {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        color: var(--color-primary);
+        pointer-events: none;
+        transition: transform 0.3s ease;
+    }
+    .custom-select:focus + .select-arrow {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
     .floating-wa {
-      position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px;
-      background-color: #25D366; border-radius: 50%; display: flex;
-      align-items: center; justify-content: center; color: white;
-      font-size: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 100;
-      transition: all 0.4s ease;
+      position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background-color: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: white; font-size: 32px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 100; transition: all 0.4s ease;
     }
     .floating-wa:hover { transform: scale(1.1); }
-
-    /* Timeline untuk "Cara Order" */
-    .timeline { position: relative; }
-    .timeline::before {
-      content: ''; position: absolute; top: 1rem; left: 1.25rem; bottom: 1rem;
-      width: 3px; border-radius: 2px;
-      background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
-      opacity: 0.3;
+    .text-gradient-animated {
+        background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+        background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        animation: gradient-pan 4s linear infinite;
     }
-    .timeline-item .dot {
-      background: var(--color-background); border: 3px solid var(--color-primary);
-    }
-
-    /* Animasi Stagger */
-    .stagger-item {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
+    @keyframes gradient-pan { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+    .pulse-glow { animation: pulse-glow-animation 2s infinite ease-in-out; }
+    @keyframes pulse-glow-animation { 0% { box-shadow: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary); } 50% { box-shadow: 0 0 15px var(--color-secondary), 0 0 25px var(--color-secondary); } 100% { box-shadow: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary); } }
+    .stagger-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
   </style>
 </head>
 <body class="antialiased">
@@ -106,8 +108,8 @@
     </div>
     <nav class="hidden md:flex gap-8 text-sm text-gray-300">
       <a href="#form" class="hover:text-white transition-colors">Pesan TopUp</a>
-      <a href="#paket" class="hover:text-white transition-colors">Daftar Harga</a>
-      <a href="#contact" class="hover:text-white transition-colors">Kontak</a>
+      <a href="#paket" class="hover:text-white transition-colors">Harga</a>
+      <a href="#testimoni" class="hover:text-white transition-colors">Testimoni</a>
     </nav>
   </header>
 
@@ -115,7 +117,7 @@
     <section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
       <div>
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-          Layanan TopUp <br> <span style="color: var(--color-primary);">BUSSID</span> & <span style="color: var(--color-secondary);">TruckSID</span>
+          Layanan TopUp <br> <span class="text-gradient-animated">BUSSID & TruckSID</span>
         </h1>
         <p class="mt-6 text-lg text-gray-300 leading-relaxed">
           Proses instan, aman, dan terpercaya. Dapatkan item game Anda dalam hitungan menit dan nikmati pengalaman bermain tanpa batas.
@@ -152,32 +154,52 @@
           <h2 class="text-3xl font-bold">Formulir Pemesanan</h2>
           <p class="text-gray-400 mt-2">Isi detail pesanan Anda di bawah ini.</p>
         </div>
+        
         <div>
           <label for="game" class="block text-sm font-semibold text-gray-300 mb-2">1. Pilih Game</label>
-          <select id="game" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
-            <option value="BUSSID">BUSSID</option>
-            <option value="TruckSID">TruckSID</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="game" class="custom-select">
+              <option value="BUSSID">BUSSID</option>
+              <option value="TruckSID">TruckSID</option>
+            </select>
+            <i class="fas fa-chevron-down select-arrow"></i>
+          </div>
         </div>
+        
         <div>
           <label for="paket" class="block text-sm font-semibold text-gray-300 mb-2">2. Pilih Paket</label>
-          <select id="paket" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
-            <option value="100 JT UB/UT - Rp10.000">100 JT — Rp10.000</option>
-            <option value="300 JT UB/UT - Rp15.000">300 JT — Rp15.000</option>
-            <option value="400 JT UB/UT - Rp20.000">400 JT — Rp20.000</option>
-            <option value="700 JT UB/UT - Rp25.000">700 JT — Rp25.000</option>
-            <option value="900 JT UB/UT - Rp30.000">900 JT — Rp30.000</option>
-            <option value="1,1 Miliar UB/UT - Rp35.000">1,1 M — Rp35.000</option>
-            <option value="1,5 Miliar UB/UT - Rp40.000">1,5 M — Rp40.000</option>
-            <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 M (MAX) 🔥 — Rp50.000</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="paket" class="custom-select">
+              <option value="100 JT UB/UT - Rp10.000">100 JT — Rp10.000</option>
+              <option value="300 JT UB/UT - Rp15.000">300 JT — Rp15.000</option>
+              <option value="400 JT UB/UT - Rp20.000">400 JT — Rp20.000</option>
+              <option value="700 JT UB/UT - Rp25.000">700 JT — Rp25.000</option>
+              <option value="900 JT UB/UT - Rp30.000">900 JT — Rp30.000</option>
+              <option value="1,1 Miliar UB/UT - Rp35.000">1,1 M — Rp35.000</option>
+              <option value="1,5 Miliar UB/UT - Rp40.000">1,5 M — Rp40.000</option>
+              <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 M (MAX) 🔥 — Rp50.000</option>
+            </select>
+            <i class="fas fa-chevron-down select-arrow"></i>
+          </div>
         </div>
+        
         <button onclick="pesanWA()" class="btn w-full !mt-8 text-lg">
           <i class="fab fa-whatsapp mr-2"></i> Lanjutkan via WhatsApp
         </button>
       </div>
+      
+      <div id="pembayaran" class="text-center mt-16">
+        <h3 class="font-semibold text-gray-400 uppercase tracking-wider text-sm">Metode Pembayaran Didukung</h3>
+        <div class="flex justify-center items-center gap-x-6 gap-y-4 mt-6 flex-wrap opacity-70">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/QRIS_logo.svg/1024px-QRIS_logo.svg.png" alt="QRIS" class="h-8 transition-transform hover:scale-110" title="QRIS">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Central_Asia_logo.svg/2560px-Bank_Central_Asia_logo.svg.png" alt="BCA" class="h-5 transition-transform hover:scale-110" title="BCA">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Dana_logo.svg/2560px-Dana_logo.svg.png" alt="DANA" class="h-6 transition-transform hover:scale-110" title="DANA">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Gopay_logo.svg/2560px-Gopay_logo.svg.png" alt="GoPay" class="h-6 transition-transform hover:scale-110" title="GoPay">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/1280px-Logo_ovo_purple.svg.png" alt="OVO" class="h-5 transition-transform hover:scale-110" title="OVO">
+        </div>
+      </div>
     </section>
-
+    
     <section id="paket" class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold">Daftar Harga</h2>
@@ -191,31 +213,27 @@
         <div class="card text-center stagger-item"><h3 class="text-xl font-semibold">900 Juta</h3><div class="mt-4 text-3xl font-bold" style="color: var(--color-primary);">Rp 30.000</div></div>
         <div class="card text-center stagger-item"><h3 class="text-xl font-semibold">1,1 Miliar</h3><div class="mt-4 text-3xl font-bold" style="color: var(--color-primary);">Rp 35.000</div></div>
         <div class="card text-center stagger-item"><h3 class="text-xl font-semibold">1,5 Miliar</h3><div class="mt-4 text-3xl font-bold" style="color: var(--color-primary);">Rp 40.000</div></div>
-        <div class="card text-center stagger-item relative ring-2 ring-pink-500"><div class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs bg-pink-500 text-white px-3 py-1 rounded-full font-semibold">Terlaris</div><h3 class="text-xl font-semibold">2 Miliar (MAX)</h3><div class="mt-4 text-3xl font-bold" style="color: var(--color-secondary);">Rp 50.000</div></div>
+        <div class="card text-center stagger-item relative ring-2 ring-pink-500"><div class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs bg-pink-500 text-white px-3 py-1 rounded-full font-semibold pulse-glow">Terlaris</div><h3 class="text-xl font-semibold">2 Miliar (MAX)</h3><div class="mt-4 text-3xl font-bold" style="color: var(--color-secondary);">Rp 50.000</div></div>
       </div>
     </section>
-    
-    <section class="max-w-4xl mx-auto px-6 py-20">
+
+    <section id="testimoni" class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold">Cara Pemesanan</h2>
-        <p class="text-gray-400 mt-3 text-lg">Hanya 4 langkah mudah dan cepat.</p>
+        <h2 class="text-4xl font-bold">Apa Kata Pelanggan Kami?</h2>
+        <p class="text-gray-400 mt-3 text-lg">Kepuasan Anda adalah prioritas utama kami.</p>
       </div>
-      <div class="timeline space-y-10" id="cara-order-list">
-        <div class="timeline-item flex items-start gap-6 stagger-item">
-          <div class="dot w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-lg">1</div>
-          <div><h3 class="text-xl font-semibold">Pilih Game & Paket</h3><p class="text-gray-400 mt-1">Tentukan game dan nominal topup yang Anda inginkan pada formulir di atas.</p></div>
+      <div class="grid md:grid-cols-3 gap-8" id="testimoni-grid">
+        <div class="card stagger-item">
+          <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">A</div><div class="ml-4"><div class="font-bold">Andi Saputra</div><div class="text-yellow-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+          <p class="text-gray-300">"Prosesnya cepet banget, gak sampai 5 menit udah masuk. Harganya juga paling oke dibanding yang lain. Recommended seller!"</p>
         </div>
-        <div class="timeline-item flex items-start gap-6 stagger-item">
-          <div class="dot w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-lg">2</div>
-          <div><h3 class="text-xl font-semibold">Hubungi via WhatsApp</h3><p class="text-gray-400 mt-1">Klik tombol untuk terhubung langsung dengan admin kami.</p></div>
+        <div class="card stagger-item">
+          <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-lg">S</div><div class="ml-4"><div class="font-bold">Siti Nurhaliza</div><div class="text-yellow-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+          <p class="text-gray-300">"Awalnya ragu, tapi ternyata aman banget. Adminnya ramah dan fast response. Pasti langganan di sini terus."</p>
         </div>
-        <div class="timeline-item flex items-start gap-6 stagger-item">
-          <div class="dot w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-lg">3</div>
-          <div><h3 class="text-xl font-semibold">Konfirmasi & Pembayaran</h3><p class="text-gray-400 mt-1">Admin kami akan memandu Anda melalui proses pembayaran yang mudah.</p></div>
-        </div>
-        <div class="timeline-item flex items-start gap-6 stagger-item">
-          <div class="dot w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-lg">4</div>
-          <div><h3 class="text-xl font-semibold">Proses Selesai</h3><p class="text-gray-400 mt-1">Pesanan Anda akan diproses dan selesai dalam kurang dari 5 menit!</p></div>
+        <div class="card stagger-item">
+          <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center font-bold text-lg">B</div><div class="ml-4"><div class="font-bold">Budi Santoso</div><div class="text-yellow-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+          <p class="text-gray-300">"Tengah malem butuh top up, iseng chat eh ternyata masih dilayanin. Mantap betul pelayanannya!"</p>
         </div>
       </div>
     </section>
@@ -231,12 +249,10 @@
         <h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Hubungi Kami</h3>
         <div class="mt-4 space-y-3">
             <a href="https://wa.me/6287878841498" target="_blank" class="flex items-center gap-3 text-gray-300 hover:text-white">
-                <i class="fab fa-whatsapp w-6 text-center text-green-400"></i>
-                <span>0878-7888-1498</span>
+                <i class="fab fa-whatsapp w-6 text-center text-green-400"></i><span>0878-7888-1498</span>
             </a>
             <a href="mailto:konchils@store.id" class="flex items-center gap-3 text-gray-300 hover:text-white">
-                <i class="fas fa-envelope w-6 text-center text-yellow-400"></i>
-                <span>konchils@store.id</span>
+                <i class="fas fa-envelope w-6 text-center text-yellow-400"></i><span>konchils@store.id</span>
             </a>
         </div>
       </div>
@@ -244,8 +260,7 @@
         <h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Sosial Media</h3>
         <div class="mt-4 space-y-3">
              <a href="#" class="flex items-center gap-3 text-gray-300 hover:text-white">
-                <i class="fab fa-instagram w-6 text-center text-pink-400"></i>
-                <span>Instagram</span>
+                <i class="fab fa-instagram w-6 text-center text-pink-400"></i><span>Instagram</span>
             </a>
         </div>
       </div>
@@ -265,31 +280,29 @@
       window.open(url, '_blank');
     }
 
-    // Animasi Stagger
     function setupStaggerAnimation(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
-
         const items = container.querySelectorAll('.stagger-item');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     items.forEach((item, index) => {
-                        item.style.transitionDelay = `${index * 100}ms`; // 100ms delay between items
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, index * 120);
                     });
                     observer.unobserve(container);
                 }
             });
-        }, { threshold: 0.2 });
-
+        }, { threshold: 0.1 });
         observer.observe(container);
     }
     
     document.addEventListener('DOMContentLoaded', () => {
         setupStaggerAnimation('harga-grid');
-        setupStaggerAnimation('cara-order-list');
+        setupStaggerAnimation('testimoni-grid');
     });
   </script>
 </body>
