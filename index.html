@@ -7,211 +7,298 @@
   <meta name="description" content="TopUp BUSSID & TruckSID cepat, aman, terpercaya. Proses ≤ 5 menit!" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
   <style>
-    body { 
-      background-color: #0f172a; 
-      color: #f1f5f9; 
-      font-family: 'Poppins', sans-serif;
-      background-image: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+    /* Font dasar dan warna latar belakang */
+    body {  
+      background-color: #0d0d1a; /* Darker blue-black */
+      color: #f1f5f9; /* Off-white for readability */
+      font-family: 'Montserrat', sans-serif;
+      background-image: linear-gradient(to bottom right, #0d0d1a, #1a1a33); /* Subtle gradient for depth */
     }
-    .card { 
-      background-color: #1e293b; 
-      border-radius: 1rem; 
-      padding: 1.5rem; 
-      transition:0.3s; 
+    
+    /* Font khusus untuk heading utama */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+    }
+
+    /* Kartu yang lebih elegan */
+    .card {  
+      background-color: #1a1a2e; /* Slightly lighter than body for contrast */
+      border-radius: 1.25rem; /* Lebih membulat */
+      padding: 2rem; /* Lebih banyak padding */
       border: 1px solid #334155;
-    }
-    .card:hover { 
-      transform: translateY(-6px); 
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5); 
-      border-color: #8b5cf6;
-    }
-    .btn { 
-      background: linear-gradient(90deg,#8b5cf6,#ec4899); 
-      color:white; 
-      padding:0.75rem 1.25rem; 
-      border-radius:0.75rem; 
-      display:block; 
-      text-align:center; 
-      font-weight:600; 
-      transition: all 0.3s ease;
+      transition: all 0.5s ease-in-out; /* Transisi lebih halus */
       position: relative;
       overflow: hidden;
     }
-    .btn:hover { 
-      opacity:0.9; 
-      transform: scale(1.05);
+
+    /* Efek glow pada hover kartu */
+    .card:hover {  
+      transform: translateY(-8px);  
+      border-color: transparent; /* Hilangkan border asli */
+      box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4), 0 0 0 2px rgba(139, 92, 246, 0.5); /* Outer glow */
+    }
+    .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1.25rem;
+        padding: 2px; /* Lebar border gradient */
+        background: linear-gradient(135deg, #8b5cf6, #ec4899);
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    /* Tombol dengan gradient halus */
+    .btn {  
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);  
+      color: white;  
+      padding: 1rem 1.75rem; /* Lebih besar */
+      border-radius: 0.75rem;  
+      display: block;  
+      text-align: center;  
+      font-weight: 700; /* Lebih tebal */
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); /* Shadow untuk dimensi */
+    }
+    .btn:hover {  
+      opacity: 0.95;  
+      transform: translateY(-2px) scale(1.01); /* Sedikit naik dan membesar */
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
     }
     .btn:active {
-      transform: scale(0.98);
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2);
     }
-    .highlight { color:#8b5cf6; font-weight:700; }
+
+    .highlight { color: #8b5cf6; font-weight:700; }
+    
+    .best-seller {
+      background: linear-gradient(135deg, #ec4899, #8b5cf6); /* Ubah arah gradient */
+      color: white;
+      position: absolute;
+      top: 15px; /* Lebih ke dalam */
+      right: -20px; /* Lebih ke dalam */
+      padding: 5px 25px;
+      font-size: 0.8rem; /* Sedikit lebih besar */
+      font-weight: bold;
+      border-radius: 0 0 0 10px;
+      transform: rotate(45deg); /* Putar 45 derajat */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      letter-spacing: 0.5px;
+    }
+
     .price-card {
       position: relative;
       overflow: hidden;
     }
-    .best-seller {
-      background: linear-gradient(135deg,#8b5cf6,#ec4899);
-      color: white;
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      padding: 5px 15px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      border-radius: 0 0 0 10px;
-      transform: rotate(5deg);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+    
     .floating-wa {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
+      bottom: 25px; /* Lebih ke atas */
+      right: 25px; /* Lebih ke kiri */
+      width: 65px; /* Lebih besar */
+      height: 65px; /* Lebih besar */
       background-color: #25D366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 32px; /* Lebih besar */
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* Shadow lebih kuat */
       z-index: 100;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       animation: pulse 2s infinite;
     }
     .floating-wa:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transform: scale(1.15); /* Membesar lebih banyak */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } /* Efek pulse lebih besar */
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
+
+    /* Ikon game di Hero Section */
     .game-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
+      width: 100px; /* Lebih besar */
+      height: 100px; /* Lebih besar */
+      border-radius: 25px; /* Lebih membulat */
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
+      font-size: 48px; /* Ikon lebih besar */
       margin: 0 auto 15px;
+      background-color: #1a1a2e; /* Background gelap */
+      border: 2px solid; /* Border */
+      border-image: linear-gradient(45deg, #8b5cf6, #ec4899) 1; /* Border gradient */
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
     }
+
+    /* Ikon fitur */
     .feature-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+      width: 60px; /* Lebih besar */
+      height: 60px; /* Lebih besar */
+      border-radius: 50%; /* Bulat sempurna */
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 28px; /* Lebih besar */
       margin: 0 auto 10px;
-      background: rgba(139, 92, 246, 0.2);
+      background: linear-gradient(45deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2)); /* Gradient background */
+      color: #ec4899; /* Warna ikon */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
+    
+    /* Nomor langkah cara order */
     .step-number {
-      width: 40px;
-      height: 40px;
+      width: 45px; /* Lebih besar */
+      height: 45px; /* Lebih besar */
       border-radius: 50%;
       background: linear-gradient(90deg,#8b5cf6,#ec4899);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      font-size: 1.25rem; /* Ukuran font lebih besar */
       flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+
+    /* Input dan select yang lebih baik */
+    .form-input {
+      background-color: #1a1a2e; /* Background gelap */
+      color: #f1f5f9;
+      border: 1px solid #475569; /* Border abu-abu */
+      padding: 0.9rem; /* Lebih banyak padding */
+      border-radius: 0.75rem; /* Lebih membulat */
+      transition: all 0.3s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #8b5cf6; /* Border ungu saat focus */
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3); /* Ring ungu */
+      background-color: #21213a; /* Sedikit lebih gelap saat focus */
+    }
+
+    /* Hero section background */
     .hero-bg {
-      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 50%),
-                  radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.2), transparent 50%);
+        position: relative;
+        overflow: hidden;
     }
+    .hero-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 50%),
+                    radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 50%);
+        z-index: -1;
+    }
+    
+    /* Animasi scroll-in (tetap dipertahankan) */
+    .animated-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi lebih lambat */
+    }
+    .animated-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
   </style>
 </head>
-<body>
+<body class="antialiased">
 
-  <!-- Floating WhatsApp -->
   <a href="https://wa.me/6287878841498?text=Halo%20kak,%20saya%20ingin%20bertanya%20tentang%20TopUp%20BUSSID%20/%20TruckSID" target="_blank" class="floating-wa">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Header -->
-  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">
+  <header class="max-w-7xl mx-auto p-8 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-indigo-600 to-pink-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
         <i class="fas fa-gamepad"></i>
       </div>
       <div>
-        <div class="text-2xl font-semibold">Konchils Store</div>
-        <div class="text-xs text-gray-400">TopUp Game</div>
+        <div class="text-3xl font-bold font-['Playfair_Display']">Konchils Store</div>
+        <div class="text-sm text-gray-400 tracking-wider uppercase">Premium TopUp</div>
       </div>
     </div>
-    <nav class="hidden md:flex gap-6 text-sm text-gray-300">
-      <a href="#form" class="hover:text-indigo-400 transition-colors">TopUp</a>
-      <a href="#paket" class="hover:text-indigo-400 transition-colors">Harga</a>
-      <a href="#contact" class="hover:text-indigo-400 transition-colors">Kontak</a>
+    <nav class="hidden md:flex gap-8 text-base text-gray-300">
+      <a href="#form" class="hover:text-indigo-400 transition-colors duration-300">TopUp</a>
+      <a href="#paket" class="hover:text-indigo-400 transition-colors duration-300">Harga</a>
+      <a href="#contact" class="hover:text-indigo-400 transition-colors duration-300">Kontak</a>
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero-bg max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h1 class="text-4xl md:text-5xl font-bold leading-snug">
-        TopUp <span class="highlight">BUSSID</span> & <br>
-        <span class="highlight">TruckSID</span> 🚍🚛
+  <section class="hero-bg max-w-7xl mx-auto px-8 py-24 grid md:grid-cols-2 gap-16 items-center">
+    <div class="animated-item">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+        Layanan TopUp <span class="highlight">BUSSID</span> & <br> 
+        <span class="highlight">TruckSID</span> <span class="text-gray-300">Premium</span>
       </h1>
-      <p class="mt-4 text-gray-300">Cepat, aman, terpercaya. Proses ≤ 5 menit!</p>
-      <div class="mt-6 flex gap-4 flex-wrap">
-        <a href="#form" class="btn flex-1 min-w-[200px] text-center">
+      <p class="mt-6 text-lg text-gray-300 leading-relaxed">Dapatkan United Bucks/United Trucks dengan cepat, aman, dan terpercaya. Proses top-up instan, selesai dalam hitungan menit untuk kepuasan bermain Anda.</p>
+      <div class="mt-10 flex gap-5 flex-wrap">
+        <a href="#form" class="btn flex-1 min-w-[220px] text-center">
           <i class="fas fa-bolt mr-2"></i> TopUp Sekarang
         </a>
-        <a href="#paket" class="border border-gray-600 px-5 py-3 rounded hover:bg-gray-700 transition-colors text-center">
-          Lihat Harga
+        <a href="#paket" class="border border-gray-600 px-7 py-4 rounded-lg hover:bg-gray-700 transition-colors duration-300 text-center text-gray-300 flex-1 min-w-[220px]">
+          Lihat Daftar Harga
         </a>
       </div>
-      <div class="mt-8 grid grid-cols-3 gap-4">
-        <div class="text-center">
+      <div class="mt-14 grid grid-cols-3 gap-8">
+        <div class="text-center animated-item">
           <div class="feature-icon mx-auto">
             <i class="fas fa-shield-alt"></i>
           </div>
-          <div class="text-xs mt-1">Aman</div>
+          <div class="text-sm mt-3 font-semibold text-gray-200">Terjamin Aman</div>
         </div>
-        <div class="text-center">
+        <div class="text-center animated-item">
           <div class="feature-icon mx-auto">
-            <i class="fas fa-bolt"></i>
+            <i class="fas fa-hourglass-half"></i>
           </div>
-          <div class="text-xs mt-1">Cepat</div>
+          <div class="text-sm mt-3 font-semibold text-gray-200">Proses Instan</div>
         </div>
-        <div class="text-center">
+        <div class="text-center animated-item">
           <div class="feature-icon mx-auto">
             <i class="fas fa-headset"></i>
           </div>
-          <div class="text-xs mt-1">Bantuan</div>
+          <div class="text-sm mt-3 font-semibold text-gray-200">Dukungan Prima</div>
         </div>
       </div>
     </div>
-    <div class="hidden md:block">
+    <div class="hidden md:block animated-item">
       <div class="relative">
-        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-2xl blur opacity-30"></div>
-        <div class="relative bg-gray-800 rounded-2xl p-8">
-          <div class="flex justify-center space-x-8">
+        <div class="absolute -inset-8 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-3xl blur-2xl opacity-40"></div>
+        <div class="relative bg-black rounded-3xl p-10 border border-gray-800 shadow-2xl">
+          <div class="flex justify-center space-x-12">
             <div class="text-center">
-              <div class="game-icon bg-gradient-to-br from-indigo-500 to-purple-600">
-                <i class="fas fa-bus"></i>
+              <div class="game-icon">
+                <i class="fas fa-bus text-indigo-400"></i>
               </div>
-              <div class="font-bold">BUSSID</div>
+              <div class="font-bold mt-4 text-xl text-gray-100">BUSSID</div>
             </div>
             <div class="text-center">
-              <div class="game-icon bg-gradient-to-br from-pink-500 to-red-600">
-                <i class="fas fa-truck"></i>
+              <div class="game-icon">
+                <i class="fas fa-truck text-pink-400"></i>
               </div>
-              <div class="font-bold">TruckSID</div>
+              <div class="font-bold mt-4 text-xl text-gray-100">TruckSID</div>
             </div>
           </div>
         </div>
@@ -219,197 +306,193 @@
     </div>
   </section>
 
-  <!-- Form Order -->
-  <section id="form" class="max-w-lg mx-auto px-6 py-8">
-    <div class="card space-y-5">
-      <h2 class="text-xl font-bold text-center">
-        <i class="fas fa-shopping-cart mr-2"></i> Form TopUp
+  <section id="form" class="max-w-xl mx-auto px-8 py-20">
+    <div class="card space-y-7 animated-item">
+      <h2 class="text-4xl font-bold text-center mb-4">
+        <i class="fas fa-shopping-cart mr-3 text-indigo-400"></i> Formulir Pemesanan
       </h2>
+      <p class="text-center text-gray-400">Isi detail pemesanan Anda di bawah ini.</p>
       <div>
-        <label class="text-sm flex items-center">
-          <i class="fas fa-gamepad mr-2 text-indigo-400"></i> Pilih Game
+        <label class="text-base font-semibold flex items-center mb-3">
+          <i class="fas fa-gamepad mr-3 text-indigo-400"></i> 1. Pilih Game Anda
         </label>
-        <select id="game" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500 border border-gray-600">
+        <select id="game" class="w-full form-input">
           <option value="BUSSID">BUSSID</option>
           <option value="TruckSID">TruckSID</option>
         </select>
       </div>
       <div>
-        <label class="text-sm flex items-center">
-          <i class="fas fa-gem mr-2 text-indigo-400"></i> Pilih Paket
+        <label class="text-base font-semibold flex items-center mb-3">
+          <i class="fas fa-gem mr-3 text-pink-400"></i> 2. Pilih Paket TopUp
         </label>
-        <select id="paket" class="w-full mt-1 p-3 rounded bg-gray-700 focus:ring-2 focus:ring-indigo-500 border border-gray-600">
-          <option value="100 JT UB/UT - Rp10.000">100 JT — Rp10.000</option>
-          <option value="300 JT UB/UT - Rp15.000">300 JT — Rp15.000</option>
-          <option value="400 JT UB/UT - Rp20.000">400 JT — Rp20.000</option>
-          <option value="700 JT UB/UT - Rp25.000">700 JT — Rp25.000</option>
-          <option value="900 JT UB/UT - Rp30.000">900 JT — Rp30.000</option>
-          <option value="1,1 Miliar UB/UT - Rp35.000">1,1 M — Rp35.000</option>
-          <option value="1,5 Miliar UB/UT - Rp40.000">1,5 M — Rp40.000</option>
-          <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 M (MAX) 🔥 — Rp50.000</option>
+        <select id="paket" class="w-full form-input">
+            <option value="100 JT UB/UT - Rp10.000">100 JT — Rp10.000</option>
+            <option value="300 JT UB/UT - Rp15.000">300 JT — Rp15.000</option>
+            <option value="400 JT UB/UT - Rp20.000">400 JT — Rp20.000</option>
+            <option value="700 JT UB/UT - Rp25.000">700 JT — Rp25.000</option>
+            <option value="900 JT UB/UT - Rp30.000">900 JT — Rp30.000</option>
+            <option value="1,1 Miliar UB/UT - Rp35.000">1,1 M — Rp35.000</option>
+            <option value="1,5 Miliar UB/UT - Rp40.000">1,5 M — Rp40.000</option>
+            <option value="2 Miliar (MAX) UB/UT - Rp50.000">2 M (MAX) 🔥 — Rp50.000</option>
         </select>
       </div>
-      <button onclick="pesanWA()" class="btn w-full">
-        <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+      <button onclick="pesanWA()" class="btn w-full !mt-10">
+        <i class="fab fa-whatsapp mr-2"></i> Lanjutkan Pemesanan via WhatsApp
       </button>
     </div>
   </section>
 
-  <!-- Daftar Harga -->
-  <section id="paket" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-bold text-center mb-2">
-      <i class="fas fa-tags mr-2"></i> Daftar Harga
+  <section id="paket" class="max-w-7xl mx-auto px-8 py-24">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      <i class="fas fa-tags mr-3 text-indigo-400"></i> Daftar Harga Eksklusif
     </h2>
-    <p class="text-center text-gray-400 mb-8">Pilih paket sesuai kebutuhan</p>
+    <p class="text-center text-lg text-gray-400 mb-16">Pilih paket top-up yang paling sesuai dengan kebutuhan Anda untuk pengalaman bermain yang tak terbatas.</p>
     
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="card price-card text-center">
-        <div class="font-semibold">100 JT</div>
-        <div class="mt-2 text-xl">Rp 10.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">300 JT</div>
-        <div class="mt-2 text-xl">Rp 15.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">400 JT</div>
-        <div class="mt-2 text-xl">Rp 20.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">700 JT</div>
-        <div class="mt-2 text-xl">Rp 25.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">900 JT</div>
-        <div class="mt-2 text-xl">Rp 30.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">1,1 M</div>
-        <div class="mt-2 text-xl">Rp 35.000</div>
-      </div>
-      <div class="card price-card text-center">
-        <div class="font-semibold">1,5 M</div>
-        <div class="mt-2 text-xl">Rp 40.000</div>
-      </div>
-      <div class="card price-card text-center relative">
-        <span class="best-seller">Terlaris</span>
-        <div class="font-semibold">2 M (MAX)</div>
-        <div class="mt-2 text-xl text-indigo-400 font-bold">Rp 50.000</div>
-      </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">100 Juta</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 10.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">300 Juta</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 15.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">400 Juta</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 20.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">700 Juta</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 25.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">900 Juta</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 30.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">1,1 Miliar</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 35.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center animated-item">
+            <div class="text-xl font-semibold">1,5 Miliar</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-gray-200">Rp 40.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
+        <div class="card price-card text-center p-8 relative animated-item">
+            <span class="best-seller">Terlaris</span>
+            <div class="text-xl font-semibold">2 Miliar (MAX)</div>
+            <div class="mt-4 text-3xl font-bold font-['Montserrat'] text-indigo-400">Rp 50.000</div>
+            <p class="text-gray-500 mt-2 text-sm">United Bucks/Trucks</p>
+        </div>
     </div>
   </section>
 
-  <!-- Cara Order -->
-  <section class="max-w-3xl mx-auto px-6 py-12">
-    <h2 class="text-2xl font-bold text-center mb-8">
-      <i class="fas fa-play-circle mr-2"></i> Cara Order
+  <section class="max-w-4xl mx-auto px-8 py-20">
+    <h2 class="text-4xl font-bold text-center mb-12">
+      <i class="fas fa-play-circle mr-3 text-pink-400"></i> Alur Pemesanan Mudah
     </h2>
-    <div class="space-y-6">
-      <div class="step">
+    <div class="space-y-10">
+      <div class="step flex items-start gap-6 animated-item">
         <div class="step-number">1</div>
         <div>
-          <div class="font-semibold">Pilih Game & Paket</div>
-          <div class="text-sm text-gray-400">Tentukan pilihan Anda</div>
+          <div class="text-xl font-semibold text-gray-100">Pilih Game & Paket</div>
+          <div class="text-base text-gray-400 mt-2">Telusuri dan tentukan game serta nominal top-up yang Anda inginkan pada formulir pemesanan yang tersedia.</div>
         </div>
       </div>
-      <div class="step">
+      <div class="step flex items-start gap-6 animated-item">
         <div class="step-number">2</div>
         <div>
-          <div class="font-semibold">Klik Tombol WhatsApp</div>
-          <div class="text-sm text-gray-400">Akan terbuka aplikasi WhatsApp</div>
+          <div class="text-xl font-semibold text-gray-100">Lanjutkan via WhatsApp</div>
+          <div class="text-base text-gray-400 mt-2">Klik tombol khusus untuk terhubung langsung dengan admin kami melalui WhatsApp. Pesanan Anda akan otomatis terkirim.</div>
         </div>
       </div>
-      <div class="step">
+      <div class="step flex items-start gap-6 animated-item">
         <div class="step-number">3</div>
         <div>
-          <div class="font-semibold">Konfirmasi & Bayar</div>
-          <div class="text-sm text-gray-400">Ikuti instruksi admin</div>
+          <div class="text-xl font-semibold text-gray-100">Konfirmasi & Pembayaran</div>
+          <div class="text-base text-gray-400 mt-2">Admin kami akan memandu Anda melalui proses konfirmasi dan menyediakan detail pembayaran yang aman dan nyaman.</div>
         </div>
       </div>
-      <div class="step">
+      <div class="step flex items-start gap-6 animated-item">
         <div class="step-number">4</div>
         <div>
-          <div class="font-semibold">Tunggu Proses</div>
-          <div class="text-sm text-gray-400">Selesai dalam 5 menit</div>
+          <div class="text-xl font-semibold text-gray-100">Pesanan Selesai Instan</div>
+          <div class="text-base text-gray-400 mt-2">Setelah pembayaran terverifikasi, top-up Anda akan diproses dan selesai dalam waktu kurang dari 5 menit!</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kontak -->
-  <section id="contact" class="max-w-3xl mx-auto px-6 py-12 text-center">
-    <h2 class="text-2xl font-bold mb-6">
-      <i class="fas fa-headset mr-2"></i> Butuh Bantuan?
+  <section id="contact" class="max-w-4xl mx-auto px-8 py-20 text-center">
+    <h2 class="text-4xl font-bold mb-8">
+      <i class="fas fa-headset mr-3 text-indigo-400"></i> Butuh Bantuan Ekstra?
     </h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="card text-center">
-        <div class="feature-icon mx-auto bg-green-500/20 text-green-400">
+    <p class="text-gray-400 mb-14 text-lg max-w-2xl mx-auto">Jangan ragu untuk menghubungi tim dukungan kami. Kami siap sedia membantu Anda dengan segala pertanyaan atau kendala.</p>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="card text-center animated-item">
+        <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl bg-green-500/15 text-green-400 mb-4 shadow-lg">
           <i class="fab fa-whatsapp"></i>
         </div>
-        <div class="font-semibold mt-4">WhatsApp</div>
-        <a href="https://wa.me/6287878841498" target="_blank" class="text-indigo-400 hover:underline block mt-2">
+        <div class="font-semibold mt-4 text-2xl text-gray-100">WhatsApp Support</div>
+        <a href="https://wa.me/6287878841498" target="_blank" class="text-indigo-400 hover:underline block mt-3 text-lg">
           0878-7888-1498
         </a>
-        <div class="text-xs text-gray-400 mt-2">Fast Response</div>
+        <div class="text-sm text-gray-500 mt-2">Respon super cepat, 24/7</div>
       </div>
-      <div class="card text-center">
-        <div class="feature-icon mx-auto bg-yellow-500/20 text-yellow-400">
+      <div class="card text-center animated-item">
+        <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl bg-yellow-500/15 text-yellow-400 mb-4 shadow-lg">
           <i class="fas fa-envelope"></i>
         </div>
-        <div class="font-semibold mt-4">Email</div>
-        <a href="mailto:konchils@store.id" class="text-indigo-400 hover:underline block mt-2">
+        <div class="font-semibold mt-4 text-2xl text-gray-100">Email Kontak</div>
+        <a href="mailto:konchils@store.id" class="text-pink-400 hover:underline block mt-3 text-lg">
           konchils@store.id
         </a>
-        <div class="text-xs text-gray-400 mt-2">Support 24/7</div>
+        <div class="text-sm text-gray-500 mt-2">Dukungan komprehensif, respons 1x24 jam</div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="mt-12 border-t border-gray-700 py-6 text-center text-sm text-gray-400">
-    © 2025 konchils store • 
-    <a href="https://wa.me/6287878841498" target="_blank" class="hover:text-indigo-400 transition-colors">WhatsApp</a> • 
-    <a href="#" class="hover:text-indigo-400 transition-colors">Instagram</a>
+  <footer class="mt-20 border-t border-gray-800 py-10 text-center text-sm text-gray-500">
+    © 2025 Konchils Store. All rights reserved. • 
+    <a href="https://wa.me/6287878841498" target="_blank" class="hover:text-indigo-400 transition-colors duration-300">WhatsApp</a> • 
+    <a href="#" class="hover:text-pink-400 transition-colors duration-300">Instagram</a>
   </footer>
 
   <script>
-    // Fungsi untuk mengirim pesan WhatsApp
     function pesanWA() {
       const game = document.getElementById('game').value;
       const paket = document.getElementById('paket').value;
       
       const nomor = "6287878841498";
-      const pesan = `Halo kak, saya ingin TopUp ${game} dengan paket ${paket}. Bagaimana cara pemesanannya?`;
+      const pesan = `Halo kak, saya ingin TopUp ${game} dengan paket ${paket}. Mohon informasinya, terima kasih.`;
       const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
       
       window.open(url, '_blank');
     }
 
-    // Animasi saat scroll
-    window.addEventListener('scroll', () => {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (cardTop < windowHeight - 100) {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }
-      });
-    });
+    // Advanced Scroll-in Animation
+    const animateOnScroll = () => {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.2 }); // Trigger when 20% of the item is visible
 
-    // Inisialisasi animasi saat load
-    window.addEventListener('load', () => {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      });
-      
-      // Trigger scroll event untuk animasi
-      window.dispatchEvent(new Event('scroll'));
-    });
+        document.querySelectorAll('.animated-item').forEach(item => {
+            observer.observe(item);
+        });
+    };
+
+    window.addEventListener('load', animateOnScroll);
   </script>
 </body>
 </html>
